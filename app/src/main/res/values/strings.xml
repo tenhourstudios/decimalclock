@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Decimal Clock</string>
+    <string name="welcome_text">Welcome to Decimal Clock!</string>
+</resources>
