@@ -3,29 +3,28 @@ package com.tenhourstudios.decimalclock
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private var number = 10
     private val handler = Handler()
-    val delay: Long = 100
+    val updateFrequency: Long = 10
 
     private val updateTime = object: Runnable {
         override fun run() {
-            Log.d("Logo", "runnable runs")
-            number = addOne(number)
-            textView.text = number.toString()
-            handler.postDelayed(this, delay)
+            val millisSinceEpoch = System.currentTimeMillis()
+            val millisToday = millisSinceEpoch % 86400000
+            tenHourTime.text = millisToTenHourTime(millisToday)
+            twentyFourHourTime.text = millisToTwentyFourHourTime(millisToday)
+            handler.postDelayed(this, updateFrequency)
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textView.text = number.toString()
     }
 
     override fun onResume() {
@@ -52,18 +51,15 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.about ->  {
-                textView.text = "about clicked"
+                tenHourTime.text = "about clicked"
                 true
             }
             R.id.settings ->  {
-                textView.text = "settings clicked"
+                tenHourTime.text = "settings clicked"
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-    fun addOne(number: Int) : Int {
-        return number + 1
     }
 
     private fun startRepeatingTask(){
@@ -74,4 +70,17 @@ class MainActivity : AppCompatActivity() {
         handler.removeCallbacks(updateTime)
     }
 
+    private fun millisToTenHourTime(millis: Long) : String {
+        val seconds = (millis / 864) % 100
+        val minutes = (millis / 86400) % 100
+        val hours = (millis / 8640000)
+        return "${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}"
+    }
+
+    private fun millisToTwentyFourHourTime(millis: Long) : String {
+        val seconds = (millis / 1000) % 60
+        val minutes = (millis / 60000) % 60
+        val hours = millis / 3600000
+        return "${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}"
+    }
 }

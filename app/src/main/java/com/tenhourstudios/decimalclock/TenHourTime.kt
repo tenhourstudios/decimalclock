@@ -5,7 +5,7 @@ class TenHourTime {
     val decimalMinute: Int? = null
     val decimalSecond: Int? = null
 
-    fun twentyFourToTenHour(time: Int) : Int {
-        return 123456
+    fun millisToTenHourTime(time: Int) : String {
+        return "b"
     }
 }
