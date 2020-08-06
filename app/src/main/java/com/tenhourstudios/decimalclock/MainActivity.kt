@@ -1,16 +1,20 @@
 package com.tenhourstudios.decimalclock
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private val handler = Handler()
     val updateFrequency: Long = 10
+    private var showDividers: Boolean = false
 
     private val updateTime = object: Runnable {
         override fun run() {
@@ -29,6 +33,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        val prefs = getSharedPreferences("Note to self", Context.MODE_PRIVATE)
+        showDividers = prefs.getBoolean("dividers", true)
+        if (showDividers) {
+            tenHourLabel.visibility = View.VISIBLE
+        } else {
+            tenHourLabel.visibility = View.INVISIBLE
+        }
         startRepeatingTask()
     }
 
@@ -51,11 +62,13 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.about ->  {
-                tenHourTime.text = "about clicked"
+                val intent = Intent(this, AboutActivity::class.java)
+                startActivity(intent)
                 true
             }
             R.id.settings ->  {
-                tenHourTime.text = "settings clicked"
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
