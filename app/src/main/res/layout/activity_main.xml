@@ -17,8 +17,9 @@
 
             <TextView
                 android:id="@+id/tenHourLabel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="32dp"
                 android:fontFeatureSettings='"smcp"'
                 android:text="@string/ten_hour_time"
@@ -28,8 +29,9 @@
 
             <TextView
                 android:id="@+id/tenHourTime"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
                 android:text="10 Hour Time"
                 android:textAlignment="center"
@@ -38,8 +40,9 @@
 
             <TextView
                 android:id="@+id/twentyFourHourLabel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="64dp"
                 android:fontFeatureSettings='"smcp"'
                 android:text="@string/twenty_four_time"
@@ -49,8 +52,9 @@
 
             <TextView
                 android:id="@+id/twentyFourHourTime"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
                 android:text="24 Hour Time"
                 android:textAlignment="center"
