@@ -10,23 +10,36 @@ import android.view.MenuItem
 import android.view.View
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
+import android.icu.util.*
 
 const val MILLIS_IN_A_DAY = 86400000
 
 class MainActivity : AppCompatActivity() {
-    private val handler = Handler()
-    var updateFrequency: Long = 1000
-    private var displayLabels: Boolean = false
-    private var displaySeconds: Boolean = false
+
     val separator = " : "
     var tenSeparator = separator
     var twentyFourSeparator = separator
+
+    // preferences initialization
+    private var displayLabels: Boolean = false
+    private var displaySeconds: Boolean = false
     var blinkingSeparator = false
+    var updateFrequency: Long = 1000
+
+    // get the devices timezone
+    private var timeZone = TimeZone.getDefault() ?: TimeZone.GMT_ZONE
+    private val timeZoneOffset = timeZone.rawOffset + timeZone.dstSavings
+
+    private val handler = Handler()
 
     private val updateTime = object: Runnable {
         override fun run() {
+            // get time in milliseconds since Unix epoch
             val millisSinceEpoch = System.currentTimeMillis()
-            val millisToday = millisSinceEpoch % MILLIS_IN_A_DAY
+
+            // add offset and mod to get milliseconds since last midnight
+            val millisToday = (millisSinceEpoch + timeZoneOffset) % MILLIS_IN_A_DAY
+
             val time = Clock(millisToday)
             tenSeparator =  when (blinkingSeparator && (time.tenSecond % 2 == 0))  {
                 true -> "   "
@@ -66,12 +79,12 @@ class MainActivity : AppCompatActivity() {
             true -> 16
             false -> 1000
         }
-        startRepeatingTask()
+        startUpdatingTime()
     }
 
     override fun onStop() {
         super.onStop()
-        stopRepeatingTask()
+        stopUpdatingTime()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -96,11 +109,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun startRepeatingTask(){
+    private fun startUpdatingTime(){
         updateTime.run()
     }
 
-    private fun stopRepeatingTask() {
+    private fun stopUpdatingTime() {
         handler.removeCallbacks(updateTime)
     }
 }

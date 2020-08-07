@@ -2,23 +2,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory android:title="General">
         <ListPreference
-            app:useSimpleSummaryProvider="true"
-            android:defaultValue="Other"
-            android:entries="@android:array/emailAddressTypes"
-            android:entryValues="@android:array/emailAddressTypes"
+            android:defaultValue="@string/theme_system_default"
+            android:entries="@array/theme_preference"
+            android:entryValues="@array/theme_preference"
             android:key="theme_preference"
-            android:title="Theme" />
+            android:title="Theme"
+            app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Clock">
         <ListPreference
-            android:defaultValue="Digital"
+            android:defaultValue="@string/clock_digital"
             android:enabled="false"
             app:useSimpleSummaryProvider="true"
-            android:entries="@android:array/emailAddressTypes"
-            android:entryValues="@android:array/emailAddressTypes"
+            android:entries="@array/clock_style_preference"
+            android:entryValues="@array/clock_style_preference"
             android:key="clock_style_preference"
             android:title="Style"/>
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="display_labels_preference"
+            android:title="Display labels" />
         <SwitchPreference
             app:useSimpleSummaryProvider="true"
             android:defaultValue="false"
@@ -26,20 +30,15 @@
             android:title="Display time with seconds" />
         <SwitchPreference
             android:defaultValue="false"
-            android:key="display_labels_preference"
-            android:title="Display labels" />
-        <SwitchPreference
-            android:defaultValue="false"
             android:key="blinking_separator_preference"
             android:title="Blinking separators"
             app:useSimpleSummaryProvider="true" />
-        <ListPreference
-            app:useSimpleSummaryProvider="true"
-            android:defaultValue="1"
-            android:entries="@android:array/emailAddressTypes"
-            android:entryValues="@android:array/emailAddressTypes"
-            android:key="timezone_preference"
-            android:title="Timezone"/>
+        <Preference
+            android:key="date_time"
+            android:title="@string/open_time_settings">
+        <intent
+            android:action="android.settings.DATE_SETTINGS"/>
+        </Preference>
     </PreferenceCategory>
 
 
