@@ -28,7 +28,6 @@
                 android:fontFeatureSettings='"smcp"'
                 android:text="@string/ten_hour_time"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
             <TextView
@@ -39,7 +38,6 @@
                 android:layout_marginTop="8dp"
                 android:text="10 Hour Time"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
                 android:textSize="48sp" />
 
             <TextView
@@ -51,7 +49,6 @@
                 android:fontFeatureSettings='"smcp"'
                 android:text="@string/twenty_four_time"
                 android:textAlignment="center"
-                android:textColor="@color/colorPrimary"
                 android:textSize="24sp" />
 
             <TextView
@@ -62,7 +59,6 @@
                 android:layout_marginTop="8dp"
                 android:text="24 Hour Time"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
                 android:textSize="48sp" />
 
         </LinearLayout>
