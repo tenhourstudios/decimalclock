@@ -1,6 +1,5 @@
 package com.tenhourstudios.decimalclock
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,19 +8,37 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
+
+const val MILLIS_IN_A_DAY = 86400000
 
 class MainActivity : AppCompatActivity() {
     private val handler = Handler()
-    val updateFrequency: Long = 10
-    private var showDividers: Boolean = false
+    var updateFrequency: Long = 1000
+    private var displayLabels: Boolean = false
+    private var displaySeconds: Boolean = false
+    val separator = " : "
+    var tenSeparator = separator
+    var twentyFourSeparator = separator
+    var blinkingSeparator = false
 
     private val updateTime = object: Runnable {
         override fun run() {
             val millisSinceEpoch = System.currentTimeMillis()
-            val millisToday = millisSinceEpoch % 86400000
-            tenHourTime.text = millisToTenHourTime(millisToday)
-            twentyFourHourTime.text = millisToTwentyFourHourTime(millisToday)
+            val millisToday = millisSinceEpoch % MILLIS_IN_A_DAY
+            val time = Clock(millisToday)
+            tenSeparator =  when (blinkingSeparator && (time.tenSecond % 2 == 0))  {
+                true -> "   "
+                false -> separator
+            }
+            tenHourTime.text = time.tenHourTime(displaySeconds, tenSeparator)
+            twentyFourSeparator =  when (blinkingSeparator  && (time.twentyFourSecond % 2 == 0)) {
+                true -> "   "
+                false -> separator
+            }
+            twentyFourHourTime.text = time.twentyFourHourTime(displaySeconds, twentyFourSeparator)
+
             handler.postDelayed(this, updateFrequency)
         }
     }
@@ -33,23 +50,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val prefs = getSharedPreferences("Note to self", Context.MODE_PRIVATE)
-        showDividers = prefs.getBoolean("dividers", true)
-        if (showDividers) {
+
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        displayLabels = sharedPrefs.getBoolean("display_labels_preference", true)
+        if (displayLabels) {
             tenHourLabel.visibility = View.VISIBLE
+            twentyFourHourLabel.visibility = View.VISIBLE
         } else {
             tenHourLabel.visibility = View.INVISIBLE
+            twentyFourHourLabel.visibility = View.INVISIBLE
+        }
+        displaySeconds = sharedPrefs.getBoolean("display_seconds_preference", false)
+        blinkingSeparator = sharedPrefs.getBoolean("blinking_separator_preference", false)
+        updateFrequency = when (blinkingSeparator || displaySeconds) {
+            true -> 16
+            false -> 1000
         }
         startRepeatingTask()
     }
 
     override fun onStop() {
         super.onStop()
-        stopRepeatingTask()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
         stopRepeatingTask()
     }
 
@@ -81,19 +102,5 @@ class MainActivity : AppCompatActivity() {
 
     private fun stopRepeatingTask() {
         handler.removeCallbacks(updateTime)
-    }
-
-    private fun millisToTenHourTime(millis: Long) : String {
-        val seconds = (millis / 864) % 100
-        val minutes = (millis / 86400) % 100
-        val hours = (millis / 8640000)
-        return "${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}"
-    }
-
-    private fun millisToTwentyFourHourTime(millis: Long) : String {
-        val seconds = (millis / 1000) % 60
-        val minutes = (millis / 60000) % 60
-        val hours = millis / 3600000
-        return "${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}"
     }
 }
