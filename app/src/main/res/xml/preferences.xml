@@ -41,5 +41,16 @@
         </Preference>
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="About">
+        <Preference
+            android:key="open_about"
+            android:title="About">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetPackage="com.tenhourstudios.decimalclock"
+                android:targetClass="com.tenhourstudios.decimalclock.AboutActivity"/>
+        </Preference>
+    </PreferenceCategory>
+
 
 </PreferenceScreen>
