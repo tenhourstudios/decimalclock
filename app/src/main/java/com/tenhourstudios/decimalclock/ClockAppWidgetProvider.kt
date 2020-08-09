@@ -7,6 +7,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
+import android.util.Log
 
 
 class ClockAppWidgetProvider : AppWidgetProvider() {
@@ -21,13 +22,26 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         if (service == null) {
             service = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_CANCEL_CURRENT)
         }
+
         manager.setRepeating(
             AlarmManager.ELAPSED_REALTIME,
             SystemClock.elapsedRealtime(),
-            86400,
+            43200,
             service
         )
     }
+
+    override fun onReceive(context: Context, intent: Intent) {
+        Log.d("logo", "Received intent $intent")
+        super.onReceive(context, intent)
+        when (intent.action) {
+            Intent.ACTION_SCREEN_ON -> Log.d("reci", "Screen turned on")
+            Intent.ACTION_USER_BACKGROUND -> Log.d("reci", "User gone background")
+            Intent.ACTION_USER_PRESENT -> Log.d("reci", "User is present")
+        }
+    }
+
+
 }
 
 

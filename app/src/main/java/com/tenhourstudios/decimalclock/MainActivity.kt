@@ -1,6 +1,8 @@
 package com.tenhourstudios.decimalclock
 
 import android.content.Intent
+import android.content.IntentFilter
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -11,6 +13,9 @@ import android.view.View
 import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
 import android.icu.util.*
+import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.*
 
 const val MILLIS_IN_A_DAY = 86400000
 
@@ -59,6 +64,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        /*
+        val intentFilter = IntentFilter(Intent.ACTION_SCREEN_ON)
+        intentFilter.addAction(Intent.ACTION_USER_PRESENT)
+        intentFilter.addAction(Intent.ACTION_USER_BACKGROUND)
+        intentFilter.addAction(Intent.ACTION_SCREEN_OFF)
+        val mReceiver = ScreenReceiver()
+        registerReceiver(mReceiver, intentFilter)
+         */
     }
 
     override fun onResume() {
