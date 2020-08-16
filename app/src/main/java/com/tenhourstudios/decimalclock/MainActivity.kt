@@ -16,6 +16,7 @@ import android.icu.util.*
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.*
+import com.google.android.material.appbar.MaterialToolbar
 
 const val MILLIS_IN_A_DAY = 86400000
 
@@ -40,6 +41,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.about ->  {
+                    val intent = Intent(this, AboutActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.settings ->  {
+                    val intent = Intent(this, SettingsActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
         updateTheme()
     }
 
@@ -69,28 +86,6 @@ class MainActivity : AppCompatActivity() {
         stopUpdatingTime()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.settings_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.about ->  {
-                val intent = Intent(this, AboutActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.settings ->  {
-                val intent = Intent(this, SettingsActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
     private fun startUpdatingTime(){
         updateTime.run()
     }
@@ -107,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             "Dark" -> MODE_NIGHT_YES
             else -> MODE_NIGHT_FOLLOW_SYSTEM
         }
-        AppCompatDelegate.setDefaultNightMode(nightMode)
+        setDefaultNightMode(nightMode)
     }
 
     private val updateTime = object: Runnable {
