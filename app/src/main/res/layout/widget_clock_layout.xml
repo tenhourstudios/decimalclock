@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:shadowColor="@color/colorPrimaryDark"
+        android:shadowColor="#000000"
         android:shadowDx="4"
         android:shadowDy="4"
         android:shadowRadius="4"
