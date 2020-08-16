@@ -37,41 +37,10 @@ class MainActivity : AppCompatActivity() {
 
     private val handler = Handler()
 
-    private val updateTime = object: Runnable {
-        override fun run() {
-            // get time in milliseconds since Unix epoch
-            val millisSinceEpoch = System.currentTimeMillis()
-
-            // add offset and mod to get milliseconds since last midnight
-            val millisToday = (millisSinceEpoch + timeZoneOffset) % MILLIS_IN_A_DAY
-
-            val time = Clock(millisToday)
-            tenSeparator =  when (blinkingSeparator && (time.tenSecond % 2 == 0))  {
-                true -> "   "
-                false -> separator
-            }
-            tenHourTime.text = time.tenHourTime(displaySeconds, tenSeparator)
-            twentyFourSeparator =  when (blinkingSeparator  && (time.twentyFourSecond % 2 == 0)) {
-                true -> "   "
-                false -> separator
-            }
-            twentyFourHourTime.text = time.twentyFourHourTime(displaySeconds, twentyFourSeparator)
-
-            handler.postDelayed(this, updateFrequency)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /*
-        val intentFilter = IntentFilter(Intent.ACTION_SCREEN_ON)
-        intentFilter.addAction(Intent.ACTION_USER_PRESENT)
-        intentFilter.addAction(Intent.ACTION_USER_BACKGROUND)
-        intentFilter.addAction(Intent.ACTION_SCREEN_OFF)
-        val mReceiver = ScreenReceiver()
-        registerReceiver(mReceiver, intentFilter)
-         */
+        updateTheme()
     }
 
     override fun onResume() {
@@ -128,5 +97,40 @@ class MainActivity : AppCompatActivity() {
 
     private fun stopUpdatingTime() {
         handler.removeCallbacks(updateTime)
+    }
+
+    private fun updateTheme() {
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val nightMode = when (sharedPrefs.getString("theme_preference", "System default"))
+        {
+            "Light" -> MODE_NIGHT_NO
+            "Dark" -> MODE_NIGHT_YES
+            else -> MODE_NIGHT_FOLLOW_SYSTEM
+        }
+        AppCompatDelegate.setDefaultNightMode(nightMode)
+    }
+
+    private val updateTime = object: Runnable {
+        override fun run() {
+            // get time in milliseconds since Unix epoch
+            val millisSinceEpoch = System.currentTimeMillis()
+
+            // add offset and mod to get milliseconds since last midnight
+            val millisToday = (millisSinceEpoch + timeZoneOffset) % MILLIS_IN_A_DAY
+
+            val time = Clock(millisToday)
+            tenSeparator =  when (blinkingSeparator && (time.tenSecond % 2 == 0))  {
+                true -> "   "
+                false -> separator
+            }
+            tenHourTime.text = time.tenHourTime(displaySeconds, tenSeparator)
+            twentyFourSeparator =  when (blinkingSeparator  && (time.twentyFourSecond % 2 == 0)) {
+                true -> "   "
+                false -> separator
+            }
+            twentyFourHourTime.text = time.twentyFourHourTime(displaySeconds, twentyFourSeparator)
+
+            handler.postDelayed(this, updateFrequency)
+        }
     }
 }
