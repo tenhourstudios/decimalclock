@@ -1,6 +1,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="General">
+    <PreferenceCategory android:title="GENERAL">
         <ListPreference
             android:defaultValue="@string/theme_system_default"
             android:icon="@drawable/ic_baseline_brightness_6_24"
@@ -11,7 +11,7 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Clock">
+    <PreferenceCategory android:title="CLOCK">
 <!--        <ListPreference
             android:defaultValue="@string/clock_digital"
             android:enabled="false"
@@ -42,7 +42,7 @@
         </Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="About">
+    <PreferenceCategory android:title="ABOUT">
         <Preference
             android:key="open_about"
             android:icon="@drawable/ic_baseline_info_24"

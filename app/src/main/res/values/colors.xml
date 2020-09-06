@@ -50,6 +50,12 @@
 <color name="green_200">#03dac6</color> <!--Color secondary-->
 <color name="green_500">#018786</color> <!--Color secondary variant-->
 
+<color name="brown_800">#4e342e</color>
+<color name="brown_800_L">#7b5e57</color>
+
+<color name="orange_900">#e65100</color>
+<color name="orange_900_L">#ff833a</color>
+
 <color name="red_200">#cf6679</color> <!--Color error (dark)-->
 <color name="red_600">#b00020</color> <!--Color error (light)-->
 

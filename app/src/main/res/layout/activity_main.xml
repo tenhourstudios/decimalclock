@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="?android:colorBackground"
-            app:title="@string/app_name"
-            app:menu="@menu/settings_menu" />
+            app:menu="@menu/settings_menu"
+            app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -48,14 +48,18 @@
 
             <TextView
                 android:id="@+id/tenHourTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
+                android:autoSizeMaxTextSize="72sp"
+                android:autoSizeMinTextSize="48sp"
+                android:autoSizeTextType="uniform"
+                android:paddingStart="36dp"
+                android:paddingEnd="36dp"
                 android:text="10 Hour Time"
-                android:textColor="?colorOnSurface"
                 android:textAlignment="center"
-                android:textSize="56sp" />
+                android:textColor="?colorOnSurface" />
 
             <TextView
                 android:id="@+id/twentyFourHourLabel"
@@ -71,14 +75,18 @@
 
             <TextView
                 android:id="@+id/twentyFourHourTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
+                android:autoSizeMaxTextSize="72sp"
+                android:autoSizeMinTextSize="48sp"
+                android:autoSizeTextType="uniform"
+                android:paddingStart="36dp"
+                android:paddingEnd="36dp"
                 android:text="24 Hour Time"
-                android:textColor="?colorOnSurface"
                 android:textAlignment="center"
-                android:textSize="56sp" />
+                android:textColor="?colorOnSurface" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
