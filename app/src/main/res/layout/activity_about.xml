@@ -8,19 +8,22 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:liftOnScroll="true">
+        app:liftOnScroll="true"
+        app:liftOnScrollTargetViewId="@id/scrollView">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="?android:colorBackground"
             app:title="@string/menu_about"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:titleTextColor="?colorOnSurface"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
-            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"/>
+            style="@style/Widget.MaterialComponents.Toolbar.Surface"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -44,14 +47,16 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
                 android:text="@string/app_name"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/aboutAppVersion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="v1.0" />
+                android:text="v1.0"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/aboutAppDescription"
@@ -59,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:padding="16dp"
-                android:text="In the 10 hour clock, there are ten hours in a day, one hundred minutes in an hour, and one hundred seconds in a minute. " />
+                android:text="In the 10 hour clock, there are ten hours in a day, one hundred minutes in an hour, and one hundred seconds in a minute. "
+                android:textSize="16sp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
