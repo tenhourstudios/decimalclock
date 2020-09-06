@@ -3,6 +3,7 @@
     <PreferenceCategory android:title="General">
         <ListPreference
             android:defaultValue="@string/theme_system_default"
+            android:icon="@drawable/ic_baseline_brightness_6_24"
             android:entries="@array/theme_preference"
             android:entryValues="@array/theme_preference"
             android:key="theme_preference"
@@ -11,14 +12,14 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="Clock">
-        <ListPreference
+<!--        <ListPreference
             android:defaultValue="@string/clock_digital"
             android:enabled="false"
             app:useSimpleSummaryProvider="true"
             android:entries="@array/clock_style_preference"
             android:entryValues="@array/clock_style_preference"
             android:key="clock_style_preference"
-            android:title="Style"/>
+            android:title="Style"/> -->
         <SwitchPreference
             android:defaultValue="true"
             android:key="display_labels_preference"
@@ -44,6 +45,7 @@
     <PreferenceCategory android:title="About">
         <Preference
             android:key="open_about"
+            android:icon="@drawable/ic_baseline_info_24"
             android:title="About">
             <intent
                 android:action="android.intent.action.VIEW"

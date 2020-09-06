@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        style="@style/Widget.MaterialComponents.AppBarLayout.Surface"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:liftOnScroll="true">
@@ -17,8 +18,7 @@
             android:layout_height="?attr/actionBarSize"
             app:title="@string/app_name"
             app:menu="@menu/settings_menu"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"/>
+            app:layout_scrollFlags="scroll|enterAlways|snap"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -41,6 +41,7 @@
                 android:fontFeatureSettings='"smcp"'
                 android:text="@string/ten_hour_time"
                 android:textAlignment="center"
+                android:textColor="?colorPrimary"
                 android:textSize="24sp" />
 
             <TextView
@@ -51,7 +52,7 @@
                 android:layout_marginTop="8dp"
                 android:text="10 Hour Time"
                 android:textAlignment="center"
-                android:textSize="48sp" />
+                android:textSize="56sp" />
 
             <TextView
                 android:id="@+id/twentyFourHourLabel"
@@ -62,6 +63,7 @@
                 android:fontFeatureSettings='"smcp"'
                 android:text="@string/twenty_four_time"
                 android:textAlignment="center"
+                android:textColor="?colorPrimary"
                 android:textSize="24sp" />
 
             <TextView
@@ -72,7 +74,7 @@
                 android:layout_marginTop="8dp"
                 android:text="24 Hour Time"
                 android:textAlignment="center"
-                android:textSize="48sp" />
+                android:textSize="56sp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
