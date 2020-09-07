@@ -12,7 +12,9 @@
 
         <service
             android:name=".ClockUpdateService"
-            android:enabled="true"/>
+            android:enabled="true"
+            android:exported="false"
+            android:description="@string/clock_update_service_description"/>
 
         <activity
             android:name=".AboutActivity"
