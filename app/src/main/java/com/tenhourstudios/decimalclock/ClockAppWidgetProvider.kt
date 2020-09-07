@@ -25,7 +25,7 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         if (service == null) {
             service = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_CANCEL_CURRENT)
         }
-        
+
         manager.setRepeating(
             AlarmManager.ELAPSED_REALTIME,
             SystemClock.elapsedRealtime(),
@@ -33,12 +33,12 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
             service
         )
 
-        appWidgetIds.forEach { appWidgetId ->
-            val pendingIntent = Intent(context, MainActivity::class.java)
-                .let {
-                        intent ->  PendingIntent.getActivity(context, 0, intent, 0)
-                }
+        val pendingIntent = Intent(context, MainActivity::class.java)
+            .let {
+                    intent ->  PendingIntent.getActivity(context, 0, intent, 0)
+            }
 
+        appWidgetIds.forEach { appWidgetId ->
             val views = RemoteViews(
                 context.packageName,
                 R.layout.widget_clock_layout
@@ -50,13 +50,8 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        Log.d("logo", "Received intent ${intent.action}")
+        Log.d("ClockAppWidgetProvider", "Received ${intent.action}")
         super.onReceive(context, intent)
-        when (intent.action) {
-            Intent.ACTION_SCREEN_ON -> Log.d("logo", "Screen turned on")
-            Intent.ACTION_USER_BACKGROUND -> Log.d("logo", "User gone background")
-            Intent.ACTION_USER_PRESENT -> Log.d("logo", "User is present")
-        }
     }
 }
 

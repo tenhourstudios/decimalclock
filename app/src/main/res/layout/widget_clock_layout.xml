@@ -18,5 +18,5 @@
         android:text="Loading..."
         android:textAlignment="center"
         android:textColor="@color/design_default_color_background"
-        android:textSize="96sp" />
+        android:textSize="48sp" />
 </LinearLayout>
