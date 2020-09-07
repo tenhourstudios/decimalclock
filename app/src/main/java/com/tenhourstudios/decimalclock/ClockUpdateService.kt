@@ -21,14 +21,20 @@ class ClockUpdateService : Service() {
     private val timeZoneOffset = timeZone.rawOffset + timeZone.dstSavings
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val widgetText = ((System.currentTimeMillis() + timeZoneOffset) % MILLIS_IN_A_DAY) / 86400
-        Log.d("logo", widgetText.toString())
-        Log.d("logo", "Adding one to number")
+        val millisToday = (System.currentTimeMillis() + timeZoneOffset) % MILLIS_IN_A_DAY
+        val time = Clock(millisToday)
+        val widgetText = time.tenHourTime(false, ":")
+
+        Log.d("logo", "ClockUpdateService: $widgetText")
+
         val view = RemoteViews(packageName, R.layout.widget_clock_layout)
-        view.setTextViewText(R.id.widget_text, widgetText.toString())
-        val theWidget = ComponentName(this, ClockAppWidgetProvider::class.java)
+        view.setTextViewText(R.id.widget_text, widgetText)
+
+        val clockWidget = ComponentName(this, ClockAppWidgetProvider::class.java)
         val manager = AppWidgetManager.getInstance(this)
-        manager.updateAppWidget(theWidget, view)
+
+        manager.updateAppWidget(clockWidget, view)
+
         return super.onStartCommand(intent, flags, startId)
     }
 }

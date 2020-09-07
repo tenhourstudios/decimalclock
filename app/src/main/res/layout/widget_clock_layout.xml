@@ -9,13 +9,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:fontFamily="sans-serif-light"
         android:gravity="center"
-        android:shadowColor="#000000"
+        android:shadowColor="#121212cc"
         android:shadowDx="4"
         android:shadowDy="4"
-        android:shadowRadius="4"
-        android:text="This is a widget"
+        android:shadowRadius="8"
+        android:text="Loading..."
         android:textAlignment="center"
         android:textColor="@color/design_default_color_background"
-        android:textSize="48sp" />
+        android:textSize="64sp" />
 </LinearLayout>

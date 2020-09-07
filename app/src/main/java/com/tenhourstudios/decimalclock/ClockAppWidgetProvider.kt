@@ -35,13 +35,11 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         Log.d("logo", "Received intent $intent")
         super.onReceive(context, intent)
         when (intent.action) {
-            Intent.ACTION_SCREEN_ON -> Log.d("reci", "Screen turned on")
-            Intent.ACTION_USER_BACKGROUND -> Log.d("reci", "User gone background")
-            Intent.ACTION_USER_PRESENT -> Log.d("reci", "User is present")
+            Intent.ACTION_SCREEN_ON -> Log.d("logo", "Screen turned on")
+            Intent.ACTION_USER_BACKGROUND -> Log.d("logo", "User gone background")
+            Intent.ACTION_USER_PRESENT -> Log.d("logo", "User is present")
         }
     }
-
-
 }
 
 
