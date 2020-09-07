@@ -1,22 +1,19 @@
 package com.tenhourstudios.decimalclock
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
+import android.icu.util.TimeZone
 import android.os.Bundle
 import android.os.Handler
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
-import androidx.preference.PreferenceManager
-import kotlinx.android.synthetic.main.activity_main.*
-import android.icu.util.*
 import android.util.Log
-import androidx.appcompat.app.AppCompatDelegate
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate.*
+import androidx.preference.PreferenceManager
 import com.google.android.material.appbar.MaterialToolbar
+import kotlinx.android.synthetic.main.activity_main.*
 
 const val MILLIS_IN_A_DAY = 86400000
 
@@ -38,9 +35,35 @@ class MainActivity : AppCompatActivity() {
 
     private val handler = Handler()
 
+    private val TAG = "ScreenBroadCastReceiver"
+
+    val broadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            if (intent != null) {
+                Log.d(TAG, "Action: ${intent.action}")
+            }
+            when (intent?.action) {
+                Intent.ACTION_BOOT_COMPLETED -> Log.d("logo", "Boot completed")
+                Intent.ACTION_SCREEN_ON -> Log.d("logo", "Screen turns on")
+                Intent.ACTION_SCREEN_OFF -> Log.d("logo", "Screen turns off")
+                Intent.ACTION_USER_BACKGROUND -> Log.d("logo", "User gone to background")
+                Intent.ACTION_USER_PRESENT -> Log.d("logo", "User present")
+            }
+        }
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(Intent.ACTION_BOOT_COMPLETED)
+        intentFilter.addAction(Intent.ACTION_SCREEN_OFF)
+        intentFilter.addAction(Intent.ACTION_SCREEN_ON)
+        intentFilter.addAction(Intent.ACTION_USER_BACKGROUND)
+        intentFilter.addAction(Intent.ACTION_USER_PRESENT)
+        registerReceiver(broadcastReceiver, intentFilter)
+
         val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -84,6 +107,11 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         stopUpdatingTime()
+    }
+
+    override fun onDestroy() {
+        unregisterReceiver(broadcastReceiver)
+        super.onDestroy()
     }
 
     private fun startUpdatingTime(){
