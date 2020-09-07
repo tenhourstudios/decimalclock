@@ -50,7 +50,7 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        Log.d("logo", "Received intent $intent")
+        Log.d("logo", "Received intent ${intent.action}")
         super.onReceive(context, intent)
         when (intent.action) {
             Intent.ACTION_SCREEN_ON -> Log.d("logo", "Screen turned on")

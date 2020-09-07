@@ -21,6 +21,7 @@
             android:background="?android:colorBackground"
             app:titleTextColor="?colorPrimary"
             app:menu="@menu/settings_menu"
+            app:popupTheme="?colorPrimary"
             app:title="@string/app_name" />
     </com.google.android.material.appbar.AppBarLayout>
 

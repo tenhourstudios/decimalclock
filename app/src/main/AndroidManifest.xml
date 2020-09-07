@@ -30,9 +30,10 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ScreenReceiver">
+        <receiver android:name=".ScreenReceiver" android:enabled="true"  android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.USER_BACKGROUND"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.intent.action.SCREEN_ON"/>
                 <action android:name="android.intent.action.SCREEN_OFF"/>
                 <action android:name="android.intent.action.USER_PRESENT"/>
