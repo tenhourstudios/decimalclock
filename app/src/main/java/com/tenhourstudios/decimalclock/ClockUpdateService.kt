@@ -15,22 +15,19 @@ import androidx.annotation.Nullable
 class ClockUpdateService : Service() {
     @Nullable
     override fun onBind(intent: Intent?): IBinder? {
+        Log.d(TAG, "Entering onBind")
         return null
     }
 
+    private val TAG = "ClockUpdateService"
     private var timeZone = TimeZone.getDefault() ?: TimeZone.GMT_ZONE
     private val timeZoneOffset = timeZone.rawOffset + timeZone.dstSavings
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        val millisToday = (System.currentTimeMillis() + timeZoneOffset) % MILLIS_IN_A_DAY
-        val time = Clock(millisToday)
-        val widgetText = time.tenHourTime(false, ":")
-
-        val TAG = "ClockUpdateService"
-        Log.d(TAG, widgetText)
-
+        Log.d(TAG, "Entering onStartCommand")
         val view = RemoteViews(packageName, R.layout.widget_clock_layout)
-        view.setTextViewText(R.id.widget_text, widgetText)
+        val time = updateTime()
+        view.setTextViewText(R.id.widget_text, time)
         view.setTextViewTextSize(R.id.widget_text, TypedValue.COMPLEX_UNIT_SP, 96F)
 
         val clockWidget = ComponentName(this, ClockAppWidgetProvider::class.java)
@@ -39,5 +36,14 @@ class ClockUpdateService : Service() {
         manager.updateAppWidget(clockWidget, view)
 
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun updateTime(): String {
+        val millisToday = (System.currentTimeMillis() + timeZoneOffset) % MILLIS_IN_A_DAY
+        val time = Clock(millisToday)
+        val widgetText = time.tenHourTime(false, ":")
+
+        Log.d(TAG, widgetText)
+        return widgetText
     }
 }

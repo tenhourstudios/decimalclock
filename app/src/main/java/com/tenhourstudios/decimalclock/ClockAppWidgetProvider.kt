@@ -14,18 +14,22 @@ import android.widget.RemoteViews
 class ClockAppWidgetProvider : AppWidgetProvider() {
 
     private var service: PendingIntent? = null
+    private val TAG = "ClockAppWidgetProvider"
 
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        val i = Intent(context, ClockUpdateService::class.java)
-        if (service == null) {
-            service = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_CANCEL_CURRENT)
-        }
 
+        Log.d(TAG, "Entering onUpdate")
+        val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(context, ClockUpdateService::class.java)
+        context.startService(intent) // loads text immediately after placing widget
+
+        if (service == null) {
+            service = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        }
         manager.setRepeating(
             AlarmManager.ELAPSED_REALTIME,
             SystemClock.elapsedRealtime(),
@@ -37,7 +41,6 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
             .let {
                     intent ->  PendingIntent.getActivity(context, 0, intent, 0)
             }
-
         appWidgetIds.forEach { appWidgetId ->
             val views = RemoteViews(
                 context.packageName,
@@ -47,11 +50,6 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
             }
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
-    }
-
-    override fun onReceive(context: Context, intent: Intent) {
-        Log.d("ClockAppWidgetProvider", "Received ${intent.action}")
-        super.onReceive(context, intent)
     }
 }
 
