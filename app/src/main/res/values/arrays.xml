@@ -9,4 +9,11 @@
         <item>@string/clock_digital</item>
         <item>@string/clock_analog</item>
     </string-array>
+
+    <string-array name="font_preference">
+        <item>@string/font_regular</item>
+        <item>@string/font_thin</item>
+        <item>@string/font_casual</item>
+        <item>@string/font_cursive</item>
+    </string-array>
 </resources>

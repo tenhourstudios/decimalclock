@@ -37,5 +37,19 @@
     <style name="Widget.MyTheme.NavigationView" parent="Widget.MaterialComponents.NavigationView">
         <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
     </style>
+    
+    <!-- Font Family -->
 
+    <style name="TimeFontRegular">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="TimeFontThin">
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+    <style name="TimeFontCasual">
+        <item name="android:fontFamily">casual</item>
+    </style>
+    <style name="TimeFontCursive">
+        <item name="android:fontFamily">cursive</item>
+    </style>
 </resources>

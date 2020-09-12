@@ -19,7 +19,7 @@ const val MILLIS_IN_A_DAY = 86400000
 
 class MainActivity : AppCompatActivity() {
 
-    val separator = " : "
+    val separator = ":"
     var tenSeparator = separator
     var twentyFourSeparator = separator
 
@@ -80,12 +80,12 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        updateTheme()
     }
 
     override fun onResume() {
         super.onResume()
 
+        updateTheme()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         displayLabels = sharedPrefs.getBoolean("display_labels_preference", true)
         if (displayLabels) {
@@ -131,6 +131,17 @@ class MainActivity : AppCompatActivity() {
             else -> MODE_NIGHT_FOLLOW_SYSTEM
         }
         setDefaultNightMode(nightMode)
+
+        val font = when (sharedPrefs.getString("font_preference", "Casual"))
+        {
+            "Thin" -> R.style.TimeFontThin
+            "Casual" -> R.style.TimeFontCasual
+            "Cursive" -> R.style.TimeFontCursive
+            else -> R.style.TimeFontRegular
+        }
+        tenHourTime.setTextAppearance(font)
+        twentyFourHourTime.setTextAppearance(font)
+
     }
 
     private val updateTime = object: Runnable {
@@ -143,12 +154,12 @@ class MainActivity : AppCompatActivity() {
 
             val time = Clock(millisToday)
             tenSeparator =  when (blinkingSeparator && (time.tenSecond % 2 == 0))  {
-                true -> "   "
+                true -> " "
                 false -> separator
             }
             tenHourTime.text = time.tenHourTime(displaySeconds, tenSeparator)
             twentyFourSeparator =  when (blinkingSeparator  && (time.twentyFourSecond % 2 == 0)) {
-                true -> "   "
+                true -> " "
                 false -> separator
             }
             twentyFourHourTime.text = time.twentyFourHourTime(displaySeconds, twentyFourSeparator)
