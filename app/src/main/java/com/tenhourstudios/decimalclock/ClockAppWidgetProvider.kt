@@ -16,13 +16,9 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
     private var service: PendingIntent? = null
     private val TAG = "ClockAppWidgetProvider"
 
-    override fun onUpdate(
-        context: Context,
-        appWidgetManager: AppWidgetManager,
-        appWidgetIds: IntArray
-    ) {
-
-        Log.d(TAG, "Entering onUpdate")
+    override fun onEnabled(context: Context) {
+        Log.d(TAG, "Entering onEnabled")
+        super.onEnabled(context)
         val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, ClockUpdateService::class.java)
         context.startForegroundService(intent) // loads text immediately after placing widget
@@ -36,12 +32,18 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
             43200,
             service
         )
+    }
 
+    override fun onUpdate(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetIds: IntArray
+    ) {
+        Log.d(TAG, "Entering onUpdate")
         val pendingIntent = Intent(context, MainActivity::class.java)
             .let {
                     clickIntent ->  PendingIntent.getActivity(context, 0, clickIntent, 0)
             }
-
         appWidgetIds.forEach { appWidgetId ->
             val views = RemoteViews(
                 context.packageName,
@@ -51,6 +53,13 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
             }
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
+    }
+
+    override fun onDisabled(context: Context) {
+        Log.d(TAG, "Entering onDisabled")
+        val intent = Intent(context, ClockUpdateService::class.java)
+        context.stopService(intent)
+        super.onDisabled(context)
     }
 }
 

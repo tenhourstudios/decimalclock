@@ -63,6 +63,7 @@ class ClockUpdateService : Service() {
         stopSelf()
         super.onDestroy()
     }
+
     private fun createNotificationChannel() {
         // check if OS version >= Oreo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
