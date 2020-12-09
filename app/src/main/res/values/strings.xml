@@ -26,4 +26,10 @@
 
     <string name="clock_update_service_description">Updates the homescreen widgets</string>
 
+    <!-- Notification texts -->
+    <string name="notification_title">Decimal Clock FG</string>
+    <string name="notification_message">Needed to update widgets</string>
+    <string name="ticker_text">Foreground service running. Needed to update homescreen widgets</string>
+
+
 </resources>

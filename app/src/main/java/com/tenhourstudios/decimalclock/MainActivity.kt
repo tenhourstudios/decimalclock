@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     private val TAG = "ScreenBroadCastReceiver"
 
-    val broadcastReceiver = object : BroadcastReceiver() {
+    private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null) {
                 Log.d(TAG, "Action: ${intent.action}")
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
         }
         setDefaultNightMode(nightMode)
 
-        val font = when (sharedPrefs.getString("font_preference", "Casual"))
+        val font = when (sharedPrefs.getString("font_preference", "Regular"))
         {
             "Thin" -> R.style.TimeFontThin
             "Casual" -> R.style.TimeFontCasual

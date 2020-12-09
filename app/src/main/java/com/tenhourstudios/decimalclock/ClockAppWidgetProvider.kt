@@ -25,7 +25,7 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         Log.d(TAG, "Entering onUpdate")
         val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, ClockUpdateService::class.java)
-        context.startService(intent) // loads text immediately after placing widget
+        context.startForegroundService(intent) // loads text immediately after placing widget
 
         if (service == null) {
             service = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)

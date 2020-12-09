@@ -1,10 +1,11 @@
 package com.tenhourstudios.decimalclock
 
-import android.app.Service
+import android.app.*
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
 import android.icu.util.TimeZone
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import android.util.TypedValue
@@ -25,6 +26,24 @@ class ClockUpdateService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d(TAG, "Entering onStartCommand")
+        createNotificationChannel()
+        val pendingIntent: PendingIntent =
+            Intent(this, MainActivity::class.java).let { notificationIntent ->
+                PendingIntent.getActivity(this, 0, notificationIntent, 0)
+            }
+
+        val notification: Notification = Notification.Builder(this, "HELLLO")
+            .setContentTitle(getText(R.string.notification_title))
+            .setContentText(getText(R.string.notification_message))
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentIntent(pendingIntent)
+            .setTicker(getText(R.string.ticker_text))
+            .build()
+
+        // Notification ID cannot be 0.
+        val ONGOING_NOTIFICATION_ID = 1
+        startForeground(ONGOING_NOTIFICATION_ID, notification)
+
         val view = RemoteViews(packageName, R.layout.widget_clock_layout)
         val time = updateTime()
         view.setTextViewText(R.id.widget_text, time)
@@ -35,7 +54,31 @@ class ClockUpdateService : Service() {
 
         manager.updateAppWidget(clockWidget, view)
 
-        return super.onStartCommand(intent, flags, startId)
+        //return super.onStartCommand(intent, flags, startId)
+        return START_STICKY
+    }
+
+    override fun onDestroy() {
+        stopForeground(true)
+        stopSelf()
+        super.onDestroy()
+    }
+    private fun createNotificationChannel() {
+        // check if OS version >= Oreo
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the Notification channel
+            val CHANNEL_ID = "HELLLO"
+            val name = "CHANNEL NAME"
+            val descriptionText = "This is channel description"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
+            mChannel.description = descriptionText
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(mChannel)
+
+        }
     }
 
     private fun updateTime(): String {
