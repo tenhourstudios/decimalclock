@@ -70,7 +70,7 @@ class ClockUpdateService : Service() {
             val CHANNEL_ID = "HELLLO"
             val name = "CHANNEL NAME"
             val descriptionText = "This is channel description"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val importance = NotificationManager.IMPORTANCE_LOW
             val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
             mChannel.description = descriptionText
             // Register the channel with the system; you can't change the importance

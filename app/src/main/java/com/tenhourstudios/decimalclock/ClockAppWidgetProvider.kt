@@ -39,8 +39,9 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
 
         val pendingIntent = Intent(context, MainActivity::class.java)
             .let {
-                    intent ->  PendingIntent.getActivity(context, 0, intent, 0)
+                    clickIntent ->  PendingIntent.getActivity(context, 0, clickIntent, 0)
             }
+
         appWidgetIds.forEach { appWidgetId ->
             val views = RemoteViews(
                 context.packageName,
