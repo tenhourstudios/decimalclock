@@ -12,7 +12,6 @@ import android.util.TypedValue
 import android.widget.RemoteViews
 import androidx.annotation.Nullable
 
-
 class ClockUpdateService : Service() {
     @Nullable
     override fun onBind(intent: Intent?): IBinder? {
@@ -23,16 +22,19 @@ class ClockUpdateService : Service() {
     private val TAG = "ClockUpdateService"
     private var timeZone = TimeZone.getDefault() ?: TimeZone.GMT_ZONE
     private val timeZoneOffset = timeZone.rawOffset + timeZone.dstSavings
+    private val CHANNEL_ID = "WidgetUpdateChannel"
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Log.d(TAG, "Entering onStartCommand")
+
         createNotificationChannel()
+
         val pendingIntent: PendingIntent =
             Intent(this, MainActivity::class.java).let { notificationIntent ->
                 PendingIntent.getActivity(this, 0, notificationIntent, 0)
             }
 
-        val notification: Notification = Notification.Builder(this, "HELLLO")
+        val notification: Notification = Notification.Builder(this, CHANNEL_ID)
             .setContentTitle(getText(R.string.notification_title))
             .setContentText(getText(R.string.notification_message))
             .setSmallIcon(R.drawable.ic_launcher_foreground)
@@ -54,11 +56,11 @@ class ClockUpdateService : Service() {
 
         manager.updateAppWidget(clockWidget, view)
 
-        //return super.onStartCommand(intent, flags, startId)
-        return START_STICKY
+        return START_NOT_STICKY
     }
 
     override fun onDestroy() {
+        Log.d(TAG, "Entering onDestroy")
         stopForeground(true)
         stopSelf()
         super.onDestroy()
@@ -68,17 +70,15 @@ class ClockUpdateService : Service() {
         // check if OS version >= Oreo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the Notification channel
-            val CHANNEL_ID = "HELLLO"
-            val name = "CHANNEL NAME"
-            val descriptionText = "This is channel description"
+            val name = getText(R.string.notification_channel_name)
+            val descriptionText = getText(R.string.notification_channel_description)
             val importance = NotificationManager.IMPORTANCE_LOW
             val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
-            mChannel.description = descriptionText
+            mChannel.description = descriptionText as String?
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(mChannel)
-
         }
     }
 

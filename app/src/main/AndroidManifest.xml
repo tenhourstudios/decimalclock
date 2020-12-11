@@ -35,7 +35,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ClockAppWidgetProvider">
+        <receiver
+            android:name=".ClockAppWidgetProvider"
+            android:label="@string/appwidget_ten_hour_clock">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.intent.action.USER_BACKGROUND" />
