@@ -24,14 +24,20 @@
     <string name="font_thin">Thin</string>
     <string name="font_cursive">Cursive</string>
 
-    <string name="clock_update_service_description">Updates the homescreen widgets</string>
+    <string name="clock_update_service_description">Updates homescreen widgets</string>
 
     <!-- AppWidget name -->
-    <string name="appwidget_ten_hour_clock">10 hour time</string>
+    <string name="appwidget_digital_clock">10 Hour Clock</string>
     <!-- Notification texts -->
     <string name="notification_channel_name">Homescreen Widget Update</string>
     <string name="notification_channel_description">This notification is needed to reliably update homescreen widgets.</string>
-    <string name="notification_title">Widget update service</string>
-    <string name="notification_message">Updates homescreen widgets</string>
-    <string name="ticker_text">Foreground service running. Needed to update homescreen widgets</string>
+    <string name="notification_title">Homescreen widgets present</string>
+    <string name="notification_message">Updating widgets every minute</string>
+    <string name="ticker_text">Homescreen widgets present. This notification is needed to update homescreen widgets</string>
+
+    <!-- About page -->
+    <string name="twitter_link">tweet <a href="https://twitter.com/tenhourstudios">@tenhourstudios</a></string>
+    <string name="email_id">email <a href="mailto:hello@tenhourstudios.com">hello@tenhourstudios.com</a></string>
+    <string name="support_kofi">If you love this app, consider supporting me. <a href="https://ko-fi.com/tenhourstudios">Buy me a Kofi!</a> I would really appreciate it.</string>
+
 </resources>

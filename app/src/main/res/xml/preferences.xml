@@ -20,13 +20,13 @@
             android:entryValues="@array/clock_style_preference"
             android:key="clock_style_preference"
             android:title="Style"/> -->
-        <ListPreference
+<!--        <ListPreference
             android:title="Font"
             android:key="font_preference"
             android:defaultValue="@string/font_regular"
             app:useSimpleSummaryProvider="true"
             android:entries="@array/font_preference"
-            android:entryValues="@array/font_preference"/>
+            android:entryValues="@array/font_preference"/>-->
         <SwitchPreference
             android:defaultValue="true"
             android:key="display_labels_preference"

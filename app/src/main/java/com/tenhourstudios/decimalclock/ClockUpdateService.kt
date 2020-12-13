@@ -1,6 +1,7 @@
 package com.tenhourstudios.decimalclock
 
 import android.app.*
+import android.app.Notification.CATEGORY_SERVICE
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
@@ -38,6 +39,7 @@ class ClockUpdateService : Service() {
             .setContentTitle(getText(R.string.notification_title))
             .setContentText(getText(R.string.notification_message))
             .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setCategory(CATEGORY_SERVICE)
             .setContentIntent(pendingIntent)
             .setTicker(getText(R.string.ticker_text))
             .build()
@@ -49,7 +51,7 @@ class ClockUpdateService : Service() {
         val view = RemoteViews(packageName, R.layout.widget_clock_layout)
         val time = updateTime()
         view.setTextViewText(R.id.widget_text, time)
-        view.setTextViewTextSize(R.id.widget_text, TypedValue.COMPLEX_UNIT_SP, 96F)
+        view.setTextViewTextSize(R.id.widget_text, TypedValue.COMPLEX_UNIT_SP, 72F)
 
         val clockWidget = ComponentName(this, ClockAppWidgetProvider::class.java)
         val manager = AppWidgetManager.getInstance(this)

@@ -26,6 +26,7 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         if (service == null) {
             service = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
         }
+
         manager.setRepeating(
             AlarmManager.ELAPSED_REALTIME,
             SystemClock.elapsedRealtime(),
@@ -58,6 +59,9 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         Log.d(TAG, "Entering onDisabled")
         val intent = Intent(context, ClockUpdateService::class.java)
+        val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val service = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+        manager.cancel(service)
         context.stopService(intent)
         super.onDisabled(context)
     }

@@ -3,6 +3,8 @@ package com.tenhourstudios.decimalclock
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
+import android.widget.TextView
 import com.google.android.material.appbar.MaterialToolbar
 
 class AboutActivity : AppCompatActivity() {
@@ -14,5 +16,12 @@ class AboutActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        val twitterLink = findViewById<TextView>(R.id.aboutTwitterLink)
+        val emailId = findViewById<TextView>(R.id.aboutEmailId)
+        val supportKofi = findViewById<TextView>(R.id.aboutKofi)
+        twitterLink.movementMethod = LinkMovementMethod.getInstance()
+        emailId.movementMethod = LinkMovementMethod.getInstance()
+        supportKofi.movementMethod = LinkMovementMethod.getInstance()
     }
 }

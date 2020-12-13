@@ -7,18 +7,20 @@ import android.content.IntentFilter
 import android.icu.util.TimeZone
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import com.google.android.material.appbar.MaterialToolbar
-import kotlinx.android.synthetic.main.activity_main.*
+import com.tenhourstudios.decimalclock.databinding.ActivityMainBinding
 
 const val MILLIS_IN_A_DAY = 86400000
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     val separator = ":"
     var tenSeparator = separator
     var twentyFourSeparator = separator
@@ -33,10 +35,11 @@ class MainActivity : AppCompatActivity() {
     private var timeZone = TimeZone.getDefault() ?: TimeZone.GMT_ZONE
     private val timeZoneOffset = timeZone.rawOffset + timeZone.dstSavings
 
-    private val handler = Handler()
+    private val handler = Handler(Looper.getMainLooper())
 
-    private val TAG = "ScreenBroadCastReceiver"
+    //private val TAG = "ScreenBroadCastReceiver"
 
+    /*
     private val broadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent != null) {
@@ -52,10 +55,14 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
+        /*
         val intentFilter = IntentFilter()
         intentFilter.addAction(Intent.ACTION_BOOT_COMPLETED)
         intentFilter.addAction(Intent.ACTION_SCREEN_OFF)
@@ -63,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         intentFilter.addAction(Intent.ACTION_USER_BACKGROUND)
         intentFilter.addAction(Intent.ACTION_USER_PRESENT)
         registerReceiver(broadcastReceiver, intentFilter)
-
+*/
         val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -84,16 +91,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         updateTheme()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         displayLabels = sharedPrefs.getBoolean("display_labels_preference", true)
         if (displayLabels) {
-            tenHourLabel.visibility = View.VISIBLE
-            twentyFourHourLabel.visibility = View.VISIBLE
+            binding.tenHourLabel.visibility = View.VISIBLE
+            binding.twentyFourHourLabel.visibility = View.VISIBLE
         } else {
-            tenHourLabel.visibility = View.INVISIBLE
-            twentyFourHourLabel.visibility = View.INVISIBLE
+            binding.tenHourLabel.visibility = View.INVISIBLE
+            binding.twentyFourHourLabel.visibility = View.INVISIBLE
         }
         displaySeconds = sharedPrefs.getBoolean("display_seconds_preference", false)
         blinkingSeparator = sharedPrefs.getBoolean("blinking_separator_preference", false)
@@ -110,7 +116,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        unregisterReceiver(broadcastReceiver)
+//        unregisterReceiver(broadcastReceiver)
         super.onDestroy()
     }
 
@@ -132,6 +138,7 @@ class MainActivity : AppCompatActivity() {
         }
         setDefaultNightMode(nightMode)
 
+        /*
         val font = when (sharedPrefs.getString("font_preference", "Regular"))
         {
             "Thin" -> R.style.TimeFontThin
@@ -141,6 +148,7 @@ class MainActivity : AppCompatActivity() {
         }
         tenHourTime.setTextAppearance(font)
         twentyFourHourTime.setTextAppearance(font)
+        */
 
     }
 
@@ -157,12 +165,12 @@ class MainActivity : AppCompatActivity() {
                 true -> " "
                 false -> separator
             }
-            tenHourTime.text = time.tenHourTime(displaySeconds, tenSeparator)
+            binding.tenHourTime.text = time.tenHourTime(displaySeconds, tenSeparator)
             twentyFourSeparator =  when (blinkingSeparator  && (time.twentyFourSecond % 2 == 0)) {
                 true -> " "
                 false -> separator
             }
-            twentyFourHourTime.text = time.twentyFourHourTime(displaySeconds, twentyFourSeparator)
+            binding.twentyFourHourTime.text = time.twentyFourHourTime(displaySeconds, twentyFourSeparator)
 
             handler.postDelayed(this, updateFrequency)
         }

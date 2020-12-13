@@ -28,16 +28,18 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <TextView
@@ -48,7 +50,10 @@
                 android:layout_marginTop="16dp"
                 android:text="@string/app_name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
                 android:id="@+id/aboutAppVersion"
@@ -56,18 +61,104 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="v1.0"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutAppName" />
 
             <TextView
                 android:id="@+id/aboutAppDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:text="In the 10 hour clock, there are ten hours in a day, one hundred minutes in an hour, and one hundred seconds in a minute. "
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutAppVersion" />
 
-        </LinearLayout>
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintTop_toBottomOf="@+id/aboutAppDescription"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:id="@+id/aboutContactHeading"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Bugs/Suggestions"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <TextView
+                android:id="@+id/aboutTwitterLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16sp"
+                android:paddingEnd="16sp"
+                android:text="@string/twitter_link"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutContactHeading" />
+
+            <TextView
+                android:id="@+id/aboutEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingStart="16sp"
+                android:paddingEnd="16sp"
+                android:text="@string/email_id"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutTwitterLink" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutEmailId" />
+
+            <TextView
+                android:id="@+id/aboutKofi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:drawablePadding="16sp"
+                android:paddingStart="16sp"
+                android:paddingEnd="16sp"
+                android:text="@string/support_kofi"
+                android:textSize="18sp"
+                app:drawableEndCompat="@drawable/ic_baseline_favorite_24"
+                app:drawableTint="?colorError"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
