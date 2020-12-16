@@ -1,19 +1,19 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="GENERAL">
+    <PreferenceCategory android:title="@string/prefs_general">
         <ListPreference
             android:defaultValue="@string/prefs_theme_system_default"
             android:icon="@drawable/ic_baseline_brightness_6_24"
             android:entries="@array/theme_preference"
             android:entryValues="@array/theme_preference"
             android:key="theme_preference"
-            android:title="Theme"
+            android:title="@string/prefs_theme"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="CLOCK">
+    <PreferenceCategory android:title="@string/prefs_clock">
 <!--        <ListPreference
-            android:defaultValue="@string/clock_digital"
+            android:defaultValue="@string/prefs_clock_digital"
             android:enabled="false"
             app:useSimpleSummaryProvider="true"
             android:entries="@array/clock_style_preference"
@@ -30,16 +30,16 @@
         <SwitchPreference
             android:defaultValue="true"
             android:key="display_labels_preference"
-            android:title="Display labels" />
+            android:title="@string/prefs_display_labels" />
         <SwitchPreference
             app:useSimpleSummaryProvider="true"
             android:defaultValue="false"
             android:key="display_seconds_preference"
-            android:title="Display time with seconds" />
+            android:title="@string/prefs_display_seconds" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="blinking_separator_preference"
-            android:title="Blinking separators"
+            android:title="@string/prefs_blinking_separators"
             app:useSimpleSummaryProvider="true" />
         <Preference
             android:key="date_time"
@@ -49,11 +49,11 @@
         </Preference>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="ABOUT">
+    <PreferenceCategory android:title="@string/prefs_about">
         <Preference
             android:key="open_about"
             android:icon="@drawable/ic_baseline_info_24"
-            android:title="About">
+            android:title="@string/prefs_about">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetPackage="com.tenhourstudios.decimalclock"

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Horloge Décimale</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="prefs_clock">Horloge</string>
+    <string name="prefs_change_time">Modifier la date et l\'heure</string>
+    <string name="prefs_display_seconds">Afficher l\'heure avec les secondes</string>
+    <string name="prefs_theme">Thème</string>
+    <string name="prefs_theme_dark">Sombre</string>
+    <string name="prefs_clock_style">Style</string>
+    <string name="prefs_theme_light">Clair</string>
+    <string name="prefs_display_labels">Afficher les étiquettes</string>
+    <string name="prefs_blinking_separators">Séparateurs clignotants</string>
+    <string name="prefs_clock_digital">Numérique</string>
+    <string name="prefs_clock_analog">Analogique</string>
+    <string name="prefs_theme_system_default">Thème système par défaut</string>
+    <string name="prefs_about">À propos</string>
+    <string name="menu_about">À propos</string>
+    <string name="appwidget_ten_hour_clock_digital">Horloge de 10 heures</string>
+    <string name="clock_ten_hour">10 heures</string>
+    <string name="clock_twenty_four_hour">24 heures</string>
+    <string name="prefs_general">Généraux</string>
+    <string name="appwidget_loading">Chargement…</string>
+    <string name="about_app_logo_description">Logo de l\'application</string>
+    <string name="about_contact_heading">Bugs / Suggestions / Assistance</string>
+    <string name="about_app_description">Dans l\'horloge de 10 heures, il y a dix heures dans une journée, cent minutes dans une heure et cent secondes dans une minute.</string>
+    <string name="notification_channel_description">Cette notification est nécessaire pour mettre à jour de manière fiable les widgets de l\'écran d\'accueil.</string>
+    <string name="notification_channel_name">Mise à jour du widget de l\'écran d\'accueil</string>
+    <string name="notification_message">Mise à jour des widgets toutes les minutes</string>
+    <string name="notification_ticker_text">Widgets d\'écran d\'accueil présents. Cette notification est nécessaire pour mettre à jour les widgets de l\'écran d\'accueil.</string>
+    <string name="service_clock_update_description">Met à jour les widgets de l\'écran d\'accueil</string>
+    <string name="notification_title">Widgets de l\'écran d\'accueil présents</string>
+</resources>

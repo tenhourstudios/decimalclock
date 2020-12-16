@@ -6,8 +6,8 @@
     </string-array>
 
     <string-array name="clock_style_preference">
-        <item>@string/clock_digital</item>
-        <item>@string/clock_analog</item>
+        <item>@string/prefs_clock_digital</item>
+        <item>@string/prefs_clock_analog</item>
     </string-array>
 
     <string-array name="font_preference">
