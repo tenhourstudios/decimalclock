@@ -15,7 +15,7 @@
         android:shadowDx="0"
         android:shadowDy="2"
         android:shadowRadius="4"
-        android:text="Loading..."
+        android:text="@string/appwidget_loading"
         android:textAlignment="center"
         android:textColor="@color/design_default_color_background"
         android:textSize="48sp" />

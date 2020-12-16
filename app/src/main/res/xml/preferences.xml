@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory android:title="GENERAL">
         <ListPreference
-            android:defaultValue="@string/theme_system_default"
+            android:defaultValue="@string/prefs_theme_system_default"
             android:icon="@drawable/ic_baseline_brightness_6_24"
             android:entries="@array/theme_preference"
             android:entryValues="@array/theme_preference"
@@ -23,7 +23,7 @@
 <!--        <ListPreference
             android:title="Font"
             android:key="font_preference"
-            android:defaultValue="@string/font_regular"
+            android:defaultValue="@string/prefs_font_regular"
             app:useSimpleSummaryProvider="true"
             android:entries="@array/font_preference"
             android:entryValues="@array/font_preference"/>-->
@@ -43,7 +43,7 @@
             app:useSimpleSummaryProvider="true" />
         <Preference
             android:key="date_time"
-            android:title="@string/open_time_settings">
+            android:title="@string/prefs_change_time">
         <intent
             android:action="android.settings.DATE_SETTINGS"/>
         </Preference>

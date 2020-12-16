@@ -1,8 +1,8 @@
 <resources>
     <string-array name="theme_preference">
-        <item>@string/theme_light</item>
-        <item>@string/theme_dark</item>
-        <item>@string/theme_system_default</item>
+        <item>@string/prefs_theme_light</item>
+        <item>@string/prefs_theme_dark</item>
+        <item>@string/prefs_theme_system_default</item>
     </string-array>
 
     <string-array name="clock_style_preference">
@@ -11,9 +11,9 @@
     </string-array>
 
     <string-array name="font_preference">
-        <item>@string/font_regular</item>
-        <item>@string/font_thin</item>
-        <item>@string/font_casual</item>
-        <item>@string/font_cursive</item>
+        <item>@string/prefs_font_regular</item>
+        <item>@string/prefs_font_thin</item>
+        <item>@string/prefs_font_casual</item>
+        <item>@string/prefs_font_cursive</item>
     </string-array>
 </resources>

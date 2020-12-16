@@ -18,7 +18,7 @@ class AboutActivity : AppCompatActivity() {
         }
 
         val versionText = findViewById<TextView>(R.id.aboutAppVersion)
-        versionText.text = String.format(getString(R.string.version_name), BuildConfig.VERSION_NAME)
+        versionText.text = String.format(getString(R.string.about_version), BuildConfig.VERSION_NAME)
         val twitterLink = findViewById<TextView>(R.id.aboutTwitterLink)
         val emailId = findViewById<TextView>(R.id.aboutEmailId)
         twitterLink.movementMethod = LinkMovementMethod.getInstance()

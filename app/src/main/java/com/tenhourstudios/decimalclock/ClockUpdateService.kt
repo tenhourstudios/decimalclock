@@ -41,7 +41,7 @@ class ClockUpdateService : Service() {
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setCategory(CATEGORY_SERVICE)
             .setContentIntent(pendingIntent)
-            .setTicker(getText(R.string.ticker_text))
+            .setTicker(getText(R.string.notification_ticker_text))
             .build()
 
         // Notification ID cannot be 0.

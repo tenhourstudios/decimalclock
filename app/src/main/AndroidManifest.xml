@@ -16,7 +16,7 @@
             android:name=".ClockUpdateService"
             android:enabled="true"
             android:exported="false"
-            android:description="@string/clock_update_service_description"/>
+            android:description="@string/service_clock_update_description"/>
 
         <activity
             android:name=".AboutActivity"
@@ -37,7 +37,7 @@
 
         <receiver
             android:name=".ClockAppWidgetProvider"
-            android:label="@string/appwidget_digital_clock">
+            android:label="@string/appwidget_ten_hour_clock_digital">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.intent.action.USER_BACKGROUND" />
