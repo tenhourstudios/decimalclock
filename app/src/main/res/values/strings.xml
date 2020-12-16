@@ -39,6 +39,5 @@
     <string name="version_name">v%1$s</string>
     <string name="twitter_link">tweet <a href="https://twitter.com/tenhourstudios">@tenhourstudios</a></string>
     <string name="email_id">email <a href="mailto:hello@tenhourstudios.com">hello@tenhourstudios.com</a></string>
-    <string name="support_kofi">If you love this app, consider supporting me. <a href="https://ko-fi.com/tenhourstudios">Buy me a Kofi!</a> I would really appreciate it.</string>
 
 </resources>

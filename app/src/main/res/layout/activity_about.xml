@@ -97,7 +97,7 @@
                 android:layout_marginTop="24dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:text="Bugs/Suggestions"
+                android:text="Bugs/Suggestions/Support"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -112,7 +112,7 @@
                 android:paddingStart="16sp"
                 android:paddingEnd="16sp"
                 android:text="@string/twitter_link"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/aboutContactHeading" />
@@ -125,7 +125,7 @@
                 android:paddingStart="16sp"
                 android:paddingEnd="16sp"
                 android:text="@string/email_id"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/aboutTwitterLink" />
@@ -140,23 +140,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/aboutEmailId" />
 
-            <TextView
-                android:id="@+id/aboutKofi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:drawablePadding="16sp"
-                android:paddingStart="16sp"
-                android:paddingEnd="16sp"
-                android:text="@string/support_kofi"
-                android:textSize="18sp"
-                app:drawableEndCompat="@drawable/ic_baseline_favorite_24"
-                app:drawableTint="?colorError"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
