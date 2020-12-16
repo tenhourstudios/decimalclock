@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Decimal Clock</string>
+    <string name="app_name">Dezimaluhr</string>
+    <string name="prefs_clock">Uhr</string>
+    <string name="prefs_clock_digital">Digital</string>
+    <string name="prefs_clock_analog">Analog</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_about">Über</string>
+    <string name="prefs_about">Über</string>
+    <string name="prefs_change_time">Datum und Uhrzeit ändern</string>
+    <string name="prefs_display_seconds">Zeit mit Sekunden anzeigen</string>
+    <string name="prefs_theme_dark">Dunkel</string>
+    <string name="prefs_theme_light">Hell</string>
+    <string name="prefs_theme_system_default">Systemstandardeinstellung</string>
+    <string name="prefs_theme">Thema</string>
+    <string name="prefs_clock_style">Design</string>
+    <string name="clock_twenty_four_hour">24 Stunden</string>
+    <string name="clock_ten_hour">10 Stunden</string>
+    <string name="prefs_general">Allgemeines</string>
+    <string name="prefs_display_labels">Labels anzeigen</string>
+    <string name="prefs_blinking_separators">Blinkende Trennzeichen</string>
+    <string name="appwidget_ten_hour_clock_digital">10 Stunden Uhr</string>
+    <string name="appwidget_loading">Wird geladen…</string>
+    <string name="about_app_logo_description">Anwendungslogo</string>
+    <string name="about_app_description">Im 10-Stunden-Takt gibt es zehn Stunden an einem Tag, hundert Minuten in einer Stunde und einhundert Sekunden in einer Minute.</string>
+    <string name="about_contact_heading">Bugs / Vorschläge / Support</string>
+    <string name="service_clock_update_description">Aktualisiert Homescreen-Widgets</string>
+    <string name="notification_channel_name">Widget-Update</string>
+    <string name="notification_channel_description">Diese Benachrichtigung wird benötigt, um Homescreen-Widgets zuverlässig zu aktualisieren.</string>
+    <string name="notification_title">Widgets laufen</string>
+    <string name="notification_message">Widgets jede Minute aktualisieren</string>
+    <string name="notification_ticker_text">Homescreen-Widgets vorhanden. Diese Benachrichtigung wird benötigt, um die Homescreen-Widgets zu aktualisieren.</string>
 </resources>

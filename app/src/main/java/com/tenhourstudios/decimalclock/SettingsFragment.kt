@@ -25,8 +25,8 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         if (key == "theme_preference") {
             val nightMode =  when (sharedPreferences.getString(key, getString(R.string.prefs_theme_system_default))) {
-                "Light" -> AppCompatDelegate.MODE_NIGHT_NO
-                "Dark" -> AppCompatDelegate.MODE_NIGHT_YES
+                getString(R.string.prefs_theme_light) -> AppCompatDelegate.MODE_NIGHT_NO
+                getString(R.string.prefs_theme_dark) -> AppCompatDelegate.MODE_NIGHT_YES
                 else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             }
             Log.d("logo", "System theme changed to $nightMode")

@@ -132,8 +132,8 @@ class MainActivity : AppCompatActivity() {
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
         val nightMode = when (sharedPrefs.getString("theme_preference", getString(R.string.prefs_theme_system_default)))
         {
-            "Light" -> MODE_NIGHT_NO
-            "Dark" -> MODE_NIGHT_YES
+            getString(R.string.prefs_theme_light) -> MODE_NIGHT_NO
+            getString(R.string.prefs_theme_dark) -> MODE_NIGHT_YES
             else -> MODE_NIGHT_FOLLOW_SYSTEM
         }
         setDefaultNightMode(nightMode)

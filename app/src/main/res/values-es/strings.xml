@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Decimal Clock</string>
+    <string name="prefs_clock">Reloj</string>
+    <string name="menu_settings">Ajustes</string>
+    <string name="prefs_change_time">Cambiar fecha y hora</string>
+    <string name="prefs_clock_style">Estilo</string>
+    <string name="prefs_theme">Tema</string>
+    <string name="prefs_theme_dark">Oscuro</string>
+    <string name="prefs_theme_light">Claro</string>
+    <string name="prefs_theme_system_default">Predeterminado del sistema</string>
+    <string name="prefs_clock_digital">Digital</string>
+    <string name="prefs_clock_analog">Analógico</string>
+    <string name="prefs_general">General</string>
+    <string name="app_name">Reloj Decimal</string>
+    <string name="prefs_display_labels">Mostrar etiquetas</string>
+    <string name="prefs_display_seconds">Mostrar hora con segundos</string>
+    <string name="prefs_blinking_separators">Separadores parpadeantes</string>
+    <string name="clock_twenty_four_hour">24 horas</string>
+    <string name="clock_ten_hour">10 horas</string>
+    <string name="menu_about">Información</string>
+    <string name="prefs_about">Información</string>
+    <string name="appwidget_ten_hour_clock_digital">Reloj de 10 horas</string>
+    <string name="appwidget_loading">Cargando…</string>
+    <string name="about_app_logo_description">Logotipo de la aplicación</string>
+    <string name="about_app_description">En el reloj de 10 horas, hay diez horas en un día, cien minutos en una hora y cien segundos en un minuto.</string>
+    <string name="about_contact_heading">Errores / Sugerencias / Soporte</string>
+    <string name="service_clock_update_description">Actualiza los widgets de la pantalla de inicio.</string>
+    <string name="notification_channel_name">Actualización de widget</string>
+    <string name="notification_channel_description">Esta notificación es necesaria para actualizar de forma fiable los widgets de la pantalla de inicio.</string>
+    <string name="notification_title">Widgets presentes</string>
+    <string name="notification_message">Actualizando widgets cada minuto</string>
+    <string name="notification_ticker_text">Hay widgets de pantalla de inicio. Esta notificación es necesaria para actualizar los widgets de la pantalla de inicio.</string>
 </resources>
