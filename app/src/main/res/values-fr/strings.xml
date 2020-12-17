@@ -30,4 +30,5 @@
     <string name="notification_ticker_text">Widgets d\'écran d\'accueil présents. Cette notification est nécessaire pour mettre à jour les widgets de l\'écran d\'accueil.</string>
     <string name="service_clock_update_description">Met à jour les widgets de l\'écran d\'accueil</string>
     <string name="notification_title">Widgets de l\'écran d\'accueil présents</string>
+    <string name="nav_go_back">Retourner</string>
 </resources>

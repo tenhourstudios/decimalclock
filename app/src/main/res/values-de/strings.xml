@@ -30,4 +30,5 @@
     <string name="notification_title">Widgets laufen</string>
     <string name="notification_message">Widgets jede Minute aktualisieren</string>
     <string name="notification_ticker_text">Homescreen-Widgets vorhanden. Diese Benachrichtigung wird benötigt, um die Homescreen-Widgets zu aktualisieren.</string>
+    <string name="nav_go_back">Geh zurück</string>
 </resources>
