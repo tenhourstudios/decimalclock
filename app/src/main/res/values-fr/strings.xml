@@ -31,4 +31,5 @@
     <string name="service_clock_update_description">Met à jour les widgets de l\'écran d\'accueil</string>
     <string name="notification_title">Widgets de l\'écran d\'accueil présents</string>
     <string name="nav_go_back">Retourner</string>
+    <string name="prefs_about_app">À propos de l\'horloge décimale</string>
 </resources>

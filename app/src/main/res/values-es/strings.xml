@@ -31,4 +31,5 @@
     <string name="notification_message">Actualizando widgets cada minuto</string>
     <string name="notification_ticker_text">Hay widgets de pantalla de inicio. Esta notificación es necesaria para actualizar los widgets de la pantalla de inicio.</string>
     <string name="nav_go_back">Regresa</string>
+    <string name="prefs_about_app">Acerca del reloj decimal</string>
 </resources>

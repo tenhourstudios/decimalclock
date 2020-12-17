@@ -41,6 +41,7 @@
     <string name="prefs_change_time">Change date &amp; time</string>
 
     <string name="prefs_about">About</string>
+    <string name="prefs_about_app">About Decimal Clock</string>
 
     <!-- AppWidgets -->
     <string name="appwidget_ten_hour_clock_digital">10 Hour Clock</string>
@@ -63,4 +64,8 @@
     <string name="notification_title">Homescreen widgets present</string>
     <string name="notification_message">Updating widgets every minute</string>
     <string name="notification_ticker_text">Homescreen widgets present. This notification is needed to update homescreen widgets.</string>
+
+    <!-- links -->
+    <string name="twitter_link" translatable="false">https://twitter.com/tenhourstudios</string>
+    <string name="email_id" translatable="false">mailto:hello@tenhourstudios.com</string>
 </resources>

@@ -108,9 +108,11 @@
 
             <TextView
                 android:id="@+id/aboutTwitterLink"
+                android:background="?android:selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:paddingVertical="16sp"
                 android:paddingStart="16sp"
                 android:paddingEnd="16sp"
                 android:text="@string/about_twitter"
@@ -121,9 +123,10 @@
 
             <TextView
                 android:id="@+id/aboutEmailId"
+                android:background="?android:selectableItemBackground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:paddingVertical="16sp"
                 android:paddingStart="16sp"
                 android:paddingEnd="16sp"
                 android:text="@string/about_email"
