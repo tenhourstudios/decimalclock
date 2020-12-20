@@ -1,9 +1,6 @@
 package com.tenhourstudios.decimalclock
 
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.icu.util.TimeZone
 import android.os.Bundle
 import android.os.Handler
@@ -15,6 +12,7 @@ import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import com.google.android.material.appbar.MaterialToolbar
 import com.tenhourstudios.decimalclock.databinding.ActivityMainBinding
+import java.time.Instant
 
 const val MILLIS_IN_A_DAY = 86400000
 
@@ -109,7 +107,7 @@ class MainActivity : AppCompatActivity() {
     private val updateTime = object: Runnable {
         override fun run() {
             // get time in milliseconds since Unix epoch
-            val millisSinceEpoch = System.currentTimeMillis()
+            val millisSinceEpoch = Instant.now().toEpochMilli()
 
             // add offset and mod to get milliseconds since last midnight
             val millisToday = (millisSinceEpoch + timeZoneOffset) % MILLIS_IN_A_DAY

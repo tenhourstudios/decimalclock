@@ -22,7 +22,7 @@ class ClockUpdateService : Service() {
 
     private val TAG = "ClockUpdateService"
     private var timeZone = TimeZone.getDefault() ?: TimeZone.GMT_ZONE
-    private val timeZoneOffset = timeZone.rawOffset + timeZone.dstSavings
+    private val timeZoneOffset = timeZone.rawOffset
     private val CHANNEL_ID = "WidgetUpdateChannel"
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
