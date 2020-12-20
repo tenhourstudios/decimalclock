@@ -33,44 +33,16 @@ class MainActivity : AppCompatActivity() {
 
     // get the devices timezone
     private var timeZone = TimeZone.getDefault() ?: TimeZone.GMT_ZONE
-    private val timeZoneOffset = timeZone.rawOffset + timeZone.dstSavings
+    private val timeZoneOffset = timeZone.rawOffset
 
     private val handler = Handler(Looper.getMainLooper())
 
-    //private val TAG = "ScreenBroadCastReceiver"
-
-    /*
-    private val broadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            if (intent != null) {
-                Log.d(TAG, "Action: ${intent.action}")
-            }
-            when (intent?.action) {
-                Intent.ACTION_BOOT_COMPLETED -> Log.d(TAG, "Boot completed")
-                Intent.ACTION_SCREEN_ON -> Log.d(TAG, "Screen turns on")
-                Intent.ACTION_SCREEN_OFF -> Log.d(TAG, "Screen turns off")
-                Intent.ACTION_USER_BACKGROUND -> Log.d(TAG, "User gone to background")
-                Intent.ACTION_USER_PRESENT -> Log.d(TAG, "User present")
-            }
-        }
-
-    }
-*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        /*
-        val intentFilter = IntentFilter()
-        intentFilter.addAction(Intent.ACTION_BOOT_COMPLETED)
-        intentFilter.addAction(Intent.ACTION_SCREEN_OFF)
-        intentFilter.addAction(Intent.ACTION_SCREEN_ON)
-        intentFilter.addAction(Intent.ACTION_USER_BACKGROUND)
-        intentFilter.addAction(Intent.ACTION_USER_PRESENT)
-        registerReceiver(broadcastReceiver, intentFilter)
-*/
         val topAppBar = findViewById<MaterialToolbar>(R.id.topAppBar)
         topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -115,11 +87,6 @@ class MainActivity : AppCompatActivity() {
         stopUpdatingTime()
     }
 
-    override fun onDestroy() {
-//        unregisterReceiver(broadcastReceiver)
-        super.onDestroy()
-    }
-
     private fun startUpdatingTime(){
         updateTime.run()
     }
@@ -137,19 +104,6 @@ class MainActivity : AppCompatActivity() {
             else -> MODE_NIGHT_FOLLOW_SYSTEM
         }
         setDefaultNightMode(nightMode)
-
-        /*
-        val font = when (sharedPrefs.getString("font_preference", "Regular"))
-        {
-            "Thin" -> R.style.TimeFontThin
-            "Casual" -> R.style.TimeFontCasual
-            "Cursive" -> R.style.TimeFontCursive
-            else -> R.style.TimeFontRegular
-        }
-        tenHourTime.setTextAppearance(font)
-        twentyFourHourTime.setTextAppearance(font)
-        */
-
     }
 
     private val updateTime = object: Runnable {
