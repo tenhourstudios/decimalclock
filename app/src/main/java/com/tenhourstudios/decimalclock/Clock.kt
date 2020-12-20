@@ -6,7 +6,7 @@ class Clock(millis: Long) {
     val tenHour = (millis / 8640000)
 
     fun tenHourTime(displaySeconds: Boolean, separator: String) : String {
-        var tenHourTime = "${tenHour.toString().padStart(2, '0')}$separator${tenMinute.toString().padStart(2, '0')}"
+        var tenHourTime = "${tenHour.toString().padStart(1, '0')}$separator${tenMinute.toString().padStart(2, '0')}"
         if (displaySeconds) {
             tenHourTime += "$separator${tenSecond.toString().padStart(2, '0')}"
         }
