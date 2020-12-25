@@ -54,10 +54,6 @@
             android:key="open_about"
             android:icon="@drawable/ic_baseline_info_24"
             android:title="@string/prefs_about_app">
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetPackage="com.tenhourstudios.decimalclock"
-                android:targetClass="com.tenhourstudios.decimalclock.AboutActivity"/>
         </Preference>
     </PreferenceCategory>
 

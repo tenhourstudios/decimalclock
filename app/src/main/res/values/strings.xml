@@ -53,7 +53,7 @@
     <string name="about_app_description">In the 10 hour clock, there are ten hours in a day, one hundred minutes in an hour, and one hundred seconds in a minute. </string>
     <string name="about_contact_heading">Bugs / Suggestions / Support</string>
     <string name="about_twitter" translatable="false">tweet <xliff:g id="twitter_link"><a href="https://twitter.com/tenhourstudios">@tenhourstudios</a></xliff:g></string>
-    <string name="about_email" translatable="false">email <xliff:g  id="email_id"><a href="mailto:hello@tenhourstudios.com">hello@tenhourstudios.com</a></xliff:g></string>
+    <string name="about_email" translatable="false">email <xliff:g id="email_id"><a href="mailto:hello@tenhourstudios.com">hello@tenhourstudios.com</a></xliff:g></string>
 
     <!-- Services -->
     <string name="service_clock_update_description">Updates homescreen widgets</string>
@@ -68,4 +68,6 @@
     <!-- links -->
     <string name="twitter_link" translatable="false">https://twitter.com/tenhourstudios</string>
     <string name="email_id" translatable="false">mailto:hello@tenhourstudios.com</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
