@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
-class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsFragment : PreferenceFragmentCompat(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
@@ -25,7 +27,10 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         if (key == "theme_preference") {
-            val nightMode =  when (sharedPreferences.getString(key, getString(R.string.prefs_theme_system_default))) {
+            val nightMode = when (sharedPreferences.getString(
+                key,
+                getString(R.string.prefs_theme_system_default)
+            )) {
                 getString(R.string.prefs_theme_light) -> AppCompatDelegate.MODE_NIGHT_NO
                 getString(R.string.prefs_theme_dark) -> AppCompatDelegate.MODE_NIGHT_YES
                 else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
@@ -33,5 +38,13 @@ class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedP
             Log.d("logo", "System theme changed to $nightMode")
             AppCompatDelegate.setDefaultNightMode(nightMode)
         }
+    }
+
+    override fun onPreferenceTreeClick(preference: Preference?): Boolean {
+        if (preference?.key == "open_about") {
+            this.findNavController().navigate(AboutFragmentDirections.actionGlobalAboutFragment())
+            return true
+        }
+        return false
     }
 }
