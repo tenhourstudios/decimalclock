@@ -85,6 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground"
+        android:textColor="?attr/colorPrimary"
         android:paddingVertical="16sp"
         android:paddingStart="16sp"
         android:paddingEnd="16sp"
@@ -92,13 +93,16 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutContactHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutContactHeading"
+        app:drawableStartCompat="@drawable/ic_baseline_twitter_24"
+        android:drawablePadding="8dp" />
 
     <TextView
         android:id="@+id/aboutEmailId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground"
+        android:textColor="?attr/colorPrimary"
         android:paddingVertical="16sp"
         android:paddingStart="16sp"
         android:paddingEnd="16sp"
@@ -106,7 +110,9 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutTwitterLink" />
+        app:layout_constraintTop_toBottomOf="@+id/aboutTwitterLink"
+        app:drawableStartCompat="@drawable/ic_baseline_email_24"
+        android:drawablePadding="8dp" />
 
     <View
         android:id="@+id/divider2"

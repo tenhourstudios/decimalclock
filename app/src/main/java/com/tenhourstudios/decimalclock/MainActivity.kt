@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import com.tenhourstudios.decimalclock.databinding.ActivityMainBinding
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Timber.i("onCreate called")
         updateTheme()
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root

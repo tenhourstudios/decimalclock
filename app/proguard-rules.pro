@@ -20,10 +20,3 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# Disable logging in production
--assumenosideeffects class android.util.Log {
-    public static *** d(...);
-    public static *** w(...);
-    public static *** v(...);
-    public static *** i(...);
-}

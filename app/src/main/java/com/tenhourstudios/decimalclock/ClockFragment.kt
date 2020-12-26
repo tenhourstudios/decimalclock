@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.preference.PreferenceManager
 import com.tenhourstudios.decimalclock.databinding.FragmentClockBinding
+import timber.log.Timber
 import java.time.Instant
 import java.time.OffsetTime
 import java.time.ZonedDateTime
@@ -33,7 +34,7 @@ class ClockFragment : Fragment() {
     var updateFrequency: Long = 1000
 
     // get the devices timezone
-    private var timeZoneOffset = OffsetTime.now().offset
+    private val timeZoneOffset = OffsetTime.now().offset
 
 
     private val handler = Handler(Looper.getMainLooper())
@@ -41,7 +42,7 @@ class ClockFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        Log.d("timezone", timeZoneOffset.toString())
+        Timber.d(timeZoneOffset.toString())
     }
 
     override fun onCreateView(
