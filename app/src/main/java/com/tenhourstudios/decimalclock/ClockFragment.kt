@@ -1,10 +1,8 @@
 package com.tenhourstudios.decimalclock
 
-import android.icu.util.TimeZone
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -14,9 +12,7 @@ import com.tenhourstudios.decimalclock.databinding.FragmentClockBinding
 import timber.log.Timber
 import java.time.Instant
 import java.time.OffsetTime
-import java.time.ZonedDateTime
 
-const val MILLIS_IN_A_DAY = 86400000
 
 class ClockFragment : Fragment() {
     private var _binding: FragmentClockBinding? = null
@@ -81,10 +77,13 @@ class ClockFragment : Fragment() {
             val millisSinceEpoch = Instant.now().toEpochMilli()
 
             // add offset and mod to get milliseconds since last midnight
-            val millisToday = (millisSinceEpoch + 1000 * timeZoneOffset.totalSeconds) % MILLIS_IN_A_DAY
+            val millisToday =
+                (millisSinceEpoch + 1000 * timeZoneOffset.totalSeconds) % MILLIS_IN_A_DAY
 
             val time = Clock(millisToday)
-            tenSeparator = when (blinkingSeparator && (time.tenSecond % 2 == 0)) {
+            val tClock = TenHourClock(millisToday)
+            Timber.i("${tClock.getHourPadded()}:${tClock.getMinutePadded()}:${tClock.getSecondPadded()}")
+            tenSeparator = when (blinkingSeparator && (tClock.getSecond() % 2 == 0)) {
                 true -> " "
                 false -> separator
             }

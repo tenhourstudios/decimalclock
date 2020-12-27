@@ -5,10 +5,7 @@ import android.app.Notification.CATEGORY_SERVICE
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
 import android.content.Intent
-import android.icu.util.TimeZone
-import android.os.Build
 import android.os.IBinder
-import android.util.Log
 import android.util.TypedValue
 import android.widget.RemoteViews
 import androidx.annotation.Nullable
@@ -40,7 +37,7 @@ class ClockUpdateService : Service() {
         val notification: Notification = Notification.Builder(this, CHANNEL_ID)
             .setContentTitle(getText(R.string.notification_title))
             .setContentText(getText(R.string.notification_message))
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.ic_baseline_access_time_24)
             .setCategory(CATEGORY_SERVICE)
             .setContentIntent(pendingIntent)
             .setTicker(getText(R.string.notification_ticker_text))
