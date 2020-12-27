@@ -16,6 +16,10 @@ class TenHourClock(millis: Long) {
     // total hours elapsed today rounded down
     private val dHour = dMinute / 100
 
+    fun getMillisecondPadded(width: Int = 2): String {
+        return (dMillis/10 % 100).toString().padStart(width, '0')
+    }
+
     // returns seconds between 0 and 99 inclusive
     fun getSecond(): Int {
         return (dSecond % 100).toInt()
@@ -41,5 +45,23 @@ class TenHourClock(millis: Long) {
 
     fun getHourPadded(width: Int = 1): String {
         return this.getHour().toString().padStart(width, '0')
+    }
+
+    fun  getStandard(precision: Int): String{
+        var standardTime = "${this.getHourPadded()}:${this.getMinutePadded()}"
+        if (precision >= KEY_PRECISION_MEDIUM) {
+            standardTime += ":${this.getSecondPadded()}"
+        }
+        if (precision >= KEY_PRECISION_HIGH) {
+            standardTime += ":${this.getMillisecondPadded()}"
+        }
+        return standardTime
+    }
+    fun getDecimal(precision: Int): String{
+        return "${this.getHourPadded()}." + dMillis.toString().slice(1 until precision)
+    }
+
+    fun getPercentage(precision: Int): String{
+        return "${dMinute/10}." + dMillis.toString().slice(2 until precision) + "%"
     }
 }

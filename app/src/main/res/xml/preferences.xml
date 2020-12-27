@@ -31,7 +31,7 @@
             android:defaultValue="@string/prefs_digital_standard"
             android:entries="@array/preference_format_digital"
             android:entryValues="@array/preference_format_digital"
-            android:key="preference_style_digital"
+            android:key="preference_format_digital"
             android:title="@string/prefs_format_digital"
             app:useSimpleSummaryProvider="true" />
         <ListPreference
@@ -40,11 +40,6 @@
             android:entryValues="@array/preference_precision_digital"
             android:key="preference_precision_digital"
             android:title="@string/prefs_precision"
-            app:useSimpleSummaryProvider="true" />
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="display_seconds_preference"
-            android:title="@string/prefs_display_seconds"
             app:useSimpleSummaryProvider="true" />
         <SwitchPreference
             android:defaultValue="false"

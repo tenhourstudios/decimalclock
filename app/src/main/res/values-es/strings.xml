@@ -12,7 +12,6 @@
     <string name="prefs_clock_analog">Analógico</string>
     <string name="prefs_general">General</string>
     <string name="app_name">Reloj Decimal</string>
-    <string name="prefs_display_labels">Mostrar etiquetas</string>
     <string name="prefs_display_seconds">Mostrar hora con segundos</string>
     <string name="prefs_blinking_separators">Separadores parpadeantes</string>
     <string name="clock_twenty_four_hour">24 horas</string>

@@ -24,9 +24,10 @@ class ClockFragment : Fragment() {
     var twentyFourSeparator = separator
 
     // preferences initialization
-    private var displayLabels: Boolean = false
     private var displaySeconds: Boolean = false
     var blinkingSeparator = false
+    var precision = KEY_PRECISION_LOW
+    var format: String = KEY_STANDARD
     var updateFrequency: Long = 1000
 
     // get the devices timezone
@@ -55,9 +56,22 @@ class ClockFragment : Fragment() {
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(activity)
         displaySeconds = sharedPrefs.getBoolean("display_seconds_preference", false)
         blinkingSeparator = sharedPrefs.getBoolean("blinking_separator_preference", false)
-        updateFrequency = when (blinkingSeparator || displaySeconds) {
-            true -> 16
-            false -> 1000
+        format = when(sharedPrefs.getString("preference_format_digital", getString(R.string.prefs_digital_standard)))
+        {
+            getString(R.string.prefs_digital_decimal) -> KEY_DECIMAL
+            getString(R.string.prefs_digital_percentage) -> KEY_PERCENTAGE
+            else -> KEY_STANDARD
+        }
+        precision = when(sharedPrefs.getString("preference_precision_digital", getString(R.string.prefs_precision_low)))
+        {
+            getString(R.string.prefs_precision_medium) -> KEY_PRECISION_MEDIUM
+            getString(R.string.prefs_precision_high) -> KEY_PRECISION_HIGH
+            else -> KEY_PRECISION_LOW
+        }
+        updateFrequency = when (precision) {
+            KEY_PRECISION_MEDIUM -> 16
+            KEY_PRECISION_HIGH -> 4
+            else -> 1000
         }
         startUpdatingTime()
     }
@@ -73,19 +87,21 @@ class ClockFragment : Fragment() {
                 (millisSinceEpoch + 1000 * timeZoneOffset.totalSeconds) % MILLIS_IN_A_DAY
 
             val time = Clock(millisToday)
+            binding.tenHourTime.text = time.tenHourTime(format, precision)
+            /*
             val tClock = TenHourClock(millisToday)
-            Timber.i("${tClock.getHourPadded()}:${tClock.getMinutePadded()}:${tClock.getSecondPadded()}")
             tenSeparator = when (blinkingSeparator && (tClock.getSecond() % 2 == 0)) {
                 true -> " "
                 false -> separator
             }
-            binding.tenHourTime.text = time.tenHourTime(displaySeconds, tenSeparator)
             twentyFourSeparator = when (blinkingSeparator && (time.twentyFourSecond % 2 == 0)) {
                 true -> " "
                 false -> separator
             }
+
+ */
             binding.twentyFourHourTime.text =
-                time.twentyFourHourTime(displaySeconds, twentyFourSeparator)
+                time.twentyFourHourTime(precision)
 
             handler.postDelayed(this, updateFrequency)
         }

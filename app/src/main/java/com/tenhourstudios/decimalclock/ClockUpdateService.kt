@@ -9,6 +9,7 @@ import android.os.IBinder
 import android.util.TypedValue
 import android.widget.RemoteViews
 import androidx.annotation.Nullable
+import androidx.preference.PreferenceManager
 import timber.log.Timber
 import java.time.OffsetTime
 
@@ -81,9 +82,16 @@ class ClockUpdateService : Service() {
     }
 
     private fun updateTime(): String {
+        val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val format = when(sharedPrefs.getString("preference_format_digital", getString(R.string.prefs_digital_standard)))
+        {
+            getString(R.string.prefs_digital_decimal) -> KEY_DECIMAL
+            getString(R.string.prefs_digital_percentage) -> KEY_PERCENTAGE
+            else -> KEY_STANDARD
+        }
         val millisToday = (System.currentTimeMillis() + 1000 * timeZoneOffset.totalSeconds) % MILLIS_IN_A_DAY
         val time = Clock(millisToday)
-        val widgetText = time.tenHourTime(false, ":")
+        val widgetText = time.tenHourTime(format, KEY_PRECISION_LOW)
 
         Timber.d(widgetText)
         return widgetText
