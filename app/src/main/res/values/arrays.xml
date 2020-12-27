@@ -1,19 +1,31 @@
 <resources>
-    <string-array name="theme_preference">
+    <string-array name="preference_theme">
         <item>@string/prefs_theme_light</item>
         <item>@string/prefs_theme_dark</item>
         <item>@string/prefs_theme_system_default</item>
     </string-array>
 
-    <string-array name="clock_style_preference">
+    <string-array name="preference_style_clock">
         <item>@string/prefs_clock_digital</item>
         <item>@string/prefs_clock_analog</item>
     </string-array>
 
-    <string-array name="font_preference">
+    <string-array name="preference_font">
         <item>@string/prefs_font_regular</item>
         <item>@string/prefs_font_thin</item>
         <item>@string/prefs_font_casual</item>
         <item>@string/prefs_font_cursive</item>
+    </string-array>
+
+    <string-array name="preference_format_digital">
+        <item>@string/prefs_digital_standard</item>
+        <item>@string/prefs_digital_decimal</item>
+        <item>@string/prefs_digital_percentage</item>
+    </string-array>
+
+    <string-array name="preference_precision_digital">
+        <item>@string/prefs_precision_low</item>
+        <item>@string/prefs_precision_medium</item>
+        <item>@string/prefs_precision_high</item>
     </string-array>
 </resources>

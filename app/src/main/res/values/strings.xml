@@ -28,6 +28,16 @@
     <string name="prefs_clock_analog">Analog</string>
     <string name="prefs_clock_digital">Digital</string>
 
+    <string name="prefs_format_digital">Time format</string>
+    <string name="prefs_digital_standard">5:67:89</string>
+    <string name="prefs_digital_decimal">0.56789</string>
+    <string name="prefs_digital_percentage">56.789%</string>
+
+    <string name="prefs_precision">Precision</string>
+    <string name="prefs_precision_low">Low</string>
+    <string name="prefs_precision_medium">Medium</string>
+    <string name="prefs_precision_high">High</string>
+
     <!-- Font preferences -->
     <string name="prefs_font_casual" translatable="false">Casual</string>
     <string name="prefs_font_regular" translatable="false">Regular</string>

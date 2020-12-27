@@ -53,14 +53,6 @@ class ClockFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(activity)
-        displayLabels = sharedPrefs.getBoolean("display_labels_preference", true)
-        if (displayLabels) {
-            binding.tenHourLabel.visibility = View.VISIBLE
-            binding.twentyFourHourLabel.visibility = View.VISIBLE
-        } else {
-            binding.tenHourLabel.visibility = View.INVISIBLE
-            binding.twentyFourHourLabel.visibility = View.INVISIBLE
-        }
         displaySeconds = sharedPrefs.getBoolean("display_seconds_preference", false)
         blinkingSeparator = sharedPrefs.getBoolean("blinking_separator_preference", false)
         updateFrequency = when (blinkingSeparator || displaySeconds) {

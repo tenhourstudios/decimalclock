@@ -3,39 +3,49 @@
     <PreferenceCategory android:title="@string/prefs_general">
         <ListPreference
             android:defaultValue="@string/prefs_theme_system_default"
+            android:entries="@array/preference_theme"
+            android:entryValues="@array/preference_theme"
             android:icon="@drawable/ic_baseline_brightness_6_24"
-            android:entries="@array/theme_preference"
-            android:entryValues="@array/theme_preference"
             android:key="theme_preference"
             android:title="@string/prefs_theme"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/prefs_clock">
-<!--        <ListPreference
-            android:defaultValue="@string/prefs_clock_digital"
-            android:enabled="false"
-            app:useSimpleSummaryProvider="true"
-            android:entries="@array/clock_style_preference"
-            android:entryValues="@array/clock_style_preference"
-            android:key="clock_style_preference"
-            android:title="Style"/> -->
-<!--        <ListPreference
-            android:title="Font"
-            android:key="font_preference"
-            android:defaultValue="@string/prefs_font_regular"
-            app:useSimpleSummaryProvider="true"
-            android:entries="@array/font_preference"
-            android:entryValues="@array/font_preference"/>-->
+        <!--        <ListPreference
+                    android:defaultValue="@string/prefs_clock_digital"
+                    android:enabled="false"
+                    app:useSimpleSummaryProvider="true"
+                    android:entries="@array/clock_style_preference"
+                    android:entryValues="@array/clock_style_preference"
+                    android:key="clock_style_preference"
+                    android:title="Style"/> -->
+        <!--        <ListPreference
+                    android:title="Font"
+                    android:key="font_preference"
+                    android:defaultValue="@string/prefs_font_regular"
+                    app:useSimpleSummaryProvider="true"
+                    android:entries="@array/font_preference"
+                    android:entryValues="@array/font_preference"/>-->
+        <ListPreference
+            android:defaultValue="@string/prefs_digital_standard"
+            android:entries="@array/preference_format_digital"
+            android:entryValues="@array/preference_format_digital"
+            android:key="preference_style_digital"
+            android:title="@string/prefs_format_digital"
+            app:useSimpleSummaryProvider="true" />
+        <ListPreference
+            android:defaultValue="@string/prefs_precision_low"
+            android:entries="@array/preference_precision_digital"
+            android:entryValues="@array/preference_precision_digital"
+            android:key="preference_precision_digital"
+            android:title="@string/prefs_precision"
+            app:useSimpleSummaryProvider="true" />
         <SwitchPreference
-            android:defaultValue="true"
-            android:key="display_labels_preference"
-            android:title="@string/prefs_display_labels" />
-        <SwitchPreference
-            app:useSimpleSummaryProvider="true"
             android:defaultValue="false"
             android:key="display_seconds_preference"
-            android:title="@string/prefs_display_seconds" />
+            android:title="@string/prefs_display_seconds"
+            app:useSimpleSummaryProvider="true" />
         <SwitchPreference
             android:defaultValue="false"
             android:key="blinking_separator_preference"
@@ -44,17 +54,15 @@
         <Preference
             android:key="date_time"
             android:title="@string/prefs_change_time">
-        <intent
-            android:action="android.settings.DATE_SETTINGS"/>
+            <intent android:action="android.settings.DATE_SETTINGS" />
         </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/prefs_about">
         <Preference
-            android:key="open_about"
             android:icon="@drawable/ic_baseline_info_24"
-            android:title="@string/prefs_about_app">
-        </Preference>
+            android:key="open_about"
+            android:title="@string/prefs_about_app" />
     </PreferenceCategory>
 
 
