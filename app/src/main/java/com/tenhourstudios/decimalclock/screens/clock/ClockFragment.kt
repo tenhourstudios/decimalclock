@@ -1,4 +1,4 @@
-package com.tenhourstudios.decimalclock.ui
+package com.tenhourstudios.decimalclock.screens.clock
 
 import android.os.Bundle
 import android.os.Handler

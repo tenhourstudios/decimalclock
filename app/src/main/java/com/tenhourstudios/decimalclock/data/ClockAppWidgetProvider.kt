@@ -8,8 +8,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
 import android.widget.RemoteViews
+import com.tenhourstudios.decimalclock.MainActivity
 import com.tenhourstudios.decimalclock.R
-import com.tenhourstudios.decimalclock.ui.MainActivity
 import timber.log.Timber
 
 

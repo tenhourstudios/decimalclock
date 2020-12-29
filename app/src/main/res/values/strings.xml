@@ -58,7 +58,7 @@
 
     <!-- About page -->
     <string name="about_app_logo_description">App logo</string>
-    <string name="about_version" translatable="false">v<xliff:g id="version_code">%1$s</xliff:g></string>
+    <string name="about_version_format" translatable="false">v<xliff:g id="version_code">%1$s</xliff:g></string>
     <string name="about_app_description">In the 10 hour clock, there are ten hours in a day, one hundred minutes in an hour, and one hundred seconds in a minute. </string>
     <string name="about_contact_heading">Bugs / Suggestions / Support</string>
     <string name="about_twitter" translatable="false">\@tenhourstudios</string>

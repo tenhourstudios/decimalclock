@@ -19,7 +19,7 @@
             android:exported="false"
             android:description="@string/service_clock_update_description"/>
 
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

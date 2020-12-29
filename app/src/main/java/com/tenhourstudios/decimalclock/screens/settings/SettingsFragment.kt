@@ -1,4 +1,4 @@
-package com.tenhourstudios.decimalclock.ui
+package com.tenhourstudios.decimalclock.screens.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.tenhourstudios.decimalclock.R
+import com.tenhourstudios.decimalclock.screens.about.AboutFragmentDirections
 import timber.log.Timber
 
 class SettingsFragment : PreferenceFragmentCompat(),

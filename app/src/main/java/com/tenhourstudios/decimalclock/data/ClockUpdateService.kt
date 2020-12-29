@@ -10,9 +10,9 @@ import android.util.TypedValue
 import android.widget.RemoteViews
 import androidx.annotation.Nullable
 import androidx.preference.PreferenceManager
+import com.tenhourstudios.decimalclock.MainActivity
 import com.tenhourstudios.decimalclock.R
 import com.tenhourstudios.decimalclock.data.clock.Clock
-import com.tenhourstudios.decimalclock.ui.MainActivity
 import timber.log.Timber
 import java.time.OffsetTime
 
@@ -23,10 +23,8 @@ class ClockUpdateService : Service() {
         return null
     }
 
-    private val TAG = "ClockUpdateService"
-
     private val timeZoneOffset = OffsetTime.now().offset
-    private val CHANNEL_ID = "WidgetUpdateChannel"
+    private val channelId = "WidgetUpdateChannel"
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Timber.d("Entering onStartCommand")
@@ -38,7 +36,7 @@ class ClockUpdateService : Service() {
                 PendingIntent.getActivity(this, 0, notificationIntent, 0)
             }
 
-        val notification: Notification = Notification.Builder(this, CHANNEL_ID)
+        val notification: Notification = Notification.Builder(this, channelId)
             .setContentTitle(getText(R.string.notification_title))
             .setContentText(getText(R.string.notification_message))
             .setSmallIcon(R.drawable.ic_baseline_access_time_24)
@@ -48,8 +46,8 @@ class ClockUpdateService : Service() {
             .build()
 
         // Notification ID cannot be 0.
-        val ONGOING_NOTIFICATION_ID = 1
-        startForeground(ONGOING_NOTIFICATION_ID, notification)
+        val ongoingNotificationId = 1
+        startForeground(ongoingNotificationId, notification)
 
         val view = RemoteViews(packageName, R.layout.widget_clock_layout)
         val time = updateTime()
@@ -76,7 +74,7 @@ class ClockUpdateService : Service() {
         val name = getText(R.string.notification_channel_name)
         val descriptionText = getText(R.string.notification_channel_description)
         val importance = NotificationManager.IMPORTANCE_LOW
-        val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
+        val mChannel = NotificationChannel(channelId, name, importance)
         mChannel.description = descriptionText as String?
         // Register the channel with the system; you can't change the importance
         // or other notification behaviors after this
