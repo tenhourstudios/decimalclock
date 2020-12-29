@@ -1,4 +1,4 @@
-package com.tenhourstudios.decimalclock
+package com.tenhourstudios.decimalclock.data
 
 import android.app.*
 import android.app.Notification.CATEGORY_SERVICE
@@ -10,6 +10,9 @@ import android.util.TypedValue
 import android.widget.RemoteViews
 import androidx.annotation.Nullable
 import androidx.preference.PreferenceManager
+import com.tenhourstudios.decimalclock.R
+import com.tenhourstudios.decimalclock.data.clock.Clock
+import com.tenhourstudios.decimalclock.ui.MainActivity
 import timber.log.Timber
 import java.time.OffsetTime
 
@@ -93,7 +96,7 @@ class ClockUpdateService : Service() {
         val time = Clock(millisToday)
         val widgetText = time.tenHourTime(format, KEY_PRECISION_LOW)
 
-        Timber.d(widgetText)
+        Timber.i(widgetText)
         return widgetText
     }
 }

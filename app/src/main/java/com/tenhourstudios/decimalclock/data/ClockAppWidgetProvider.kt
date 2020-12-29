@@ -1,4 +1,4 @@
-package com.tenhourstudios.decimalclock
+package com.tenhourstudios.decimalclock.data
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -7,17 +7,18 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.os.SystemClock
-import android.util.Log
 import android.widget.RemoteViews
+import com.tenhourstudios.decimalclock.R
+import com.tenhourstudios.decimalclock.ui.MainActivity
+import timber.log.Timber
 
 
 class ClockAppWidgetProvider : AppWidgetProvider() {
 
     private var service: PendingIntent? = null
-    private val TAG = "ClockAppWidgetProvider"
 
     override fun onEnabled(context: Context) {
-        Log.d(TAG, "Entering onEnabled")
+        Timber.i("Entering onEnabled")
         super.onEnabled(context)
         val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, ClockUpdateService::class.java)
@@ -40,7 +41,7 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        Log.d(TAG, "Entering onUpdate")
+        Timber.i("Entering onUpdate")
         val pendingIntent = Intent(context, MainActivity::class.java)
             .let {
                     clickIntent ->  PendingIntent.getActivity(context, 0, clickIntent, 0)
@@ -57,7 +58,7 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
     }
 
     override fun onDisabled(context: Context) {
-        Log.d(TAG, "Entering onDisabled")
+        Timber.i("Entering onDisabled")
         val intent = Intent(context, ClockUpdateService::class.java)
         val manager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val service = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)

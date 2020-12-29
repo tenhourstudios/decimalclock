@@ -1,6 +1,9 @@
-package com.tenhourstudios.decimalclock
+package com.tenhourstudios.decimalclock.data.clock
 
-const val MILLIS_IN_A_DAY = 86400000
+import com.tenhourstudios.decimalclock.data.KEY_PRECISION_HIGH
+import com.tenhourstudios.decimalclock.data.KEY_PRECISION_MEDIUM
+import com.tenhourstudios.decimalclock.data.MILLIS_IN_A_DAY
+
 
 class TenHourClock(millis: Long) {
 

@@ -1,4 +1,4 @@
-package com.tenhourstudios.decimalclock
+package com.tenhourstudios.decimalclock.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
+import com.tenhourstudios.decimalclock.R
 import com.tenhourstudios.decimalclock.databinding.ActivityMainBinding
 import timber.log.Timber
 

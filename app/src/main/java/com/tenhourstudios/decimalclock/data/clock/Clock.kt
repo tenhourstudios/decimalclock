@@ -1,11 +1,10 @@
-package com.tenhourstudios.decimalclock
+package com.tenhourstudios.decimalclock.data.clock
 
-const val KEY_STANDARD = "format_standard"
-const val KEY_DECIMAL = "format_decimal"
-const val KEY_PERCENTAGE = "format_percentage"
-const val KEY_PRECISION_LOW = 3
-const val KEY_PRECISION_MEDIUM = 5
-const val KEY_PRECISION_HIGH = 7
+import com.tenhourstudios.decimalclock.data.KEY_DECIMAL
+import com.tenhourstudios.decimalclock.data.KEY_PERCENTAGE
+import com.tenhourstudios.decimalclock.data.KEY_PRECISION_HIGH
+import com.tenhourstudios.decimalclock.data.KEY_PRECISION_MEDIUM
+
 
 class Clock(private val millis: Long) {
 

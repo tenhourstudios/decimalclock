@@ -1,12 +1,13 @@
-package com.tenhourstudios.decimalclock
+package com.tenhourstudios.decimalclock.ui
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import com.tenhourstudios.decimalclock.R
+import timber.log.Timber
 
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
@@ -35,7 +36,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 getString(R.string.prefs_theme_dark) -> AppCompatDelegate.MODE_NIGHT_YES
                 else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             }
-            Log.d("logo", "System theme changed to $nightMode")
+            Timber.i("System theme changed to $nightMode")
             AppCompatDelegate.setDefaultNightMode(nightMode)
         }
     }

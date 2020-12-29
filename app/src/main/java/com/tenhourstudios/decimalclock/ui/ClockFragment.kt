@@ -1,4 +1,4 @@
-package com.tenhourstudios.decimalclock
+package com.tenhourstudios.decimalclock.ui
 
 import android.os.Bundle
 import android.os.Handler
@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.preference.PreferenceManager
+import com.tenhourstudios.decimalclock.R
+import com.tenhourstudios.decimalclock.data.*
+import com.tenhourstudios.decimalclock.data.clock.Clock
 import com.tenhourstudios.decimalclock.databinding.FragmentClockBinding
 import timber.log.Timber
 import java.time.Instant

@@ -6,16 +6,16 @@
     app:startDestination="@id/clockFragment">
     <fragment
         android:id="@+id/clockFragment"
-        android:name="com.tenhourstudios.decimalclock.ClockFragment"
+        android:name="com.tenhourstudios.decimalclock.ui.ClockFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_clock" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.tenhourstudios.decimalclock.SettingsFragment"
+        android:name="com.tenhourstudios.decimalclock.ui.SettingsFragment"
         android:label="@string/menu_settings" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.tenhourstudios.decimalclock.AboutFragment"
+        android:name="com.tenhourstudios.decimalclock.ui.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
     <action
