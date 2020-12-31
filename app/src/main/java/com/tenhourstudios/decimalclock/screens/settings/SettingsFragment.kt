@@ -1,5 +1,7 @@
 package com.tenhourstudios.decimalclock.screens.settings
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
@@ -7,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.tenhourstudios.decimalclock.R
+import com.tenhourstudios.decimalclock.data.ClockAppWidgetProvider
 import com.tenhourstudios.decimalclock.screens.about.AboutFragmentDirections
 import timber.log.Timber
 
@@ -46,7 +49,18 @@ class SettingsFragment : PreferenceFragmentCompat(),
         if (preference?.key == "open_about") {
             this.findNavController().navigate(AboutFragmentDirections.actionGlobalAboutFragment())
             return true
+        } else if (preference?.key == "add_widget") {
+            addWidgetShortcut()
+            return true
         }
         return false
+    }
+
+    private fun addWidgetShortcut() {
+        val appWidgetManager: AppWidgetManager =
+            requireContext().getSystemService(AppWidgetManager::class.java)
+        val myProvider = ComponentName(requireContext(), ClockAppWidgetProvider::class.java)
+
+        appWidgetManager.requestPinAppWidget(myProvider, null, null)
     }
 }

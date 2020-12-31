@@ -55,6 +55,7 @@
     <!-- AppWidgets -->
     <string name="appwidget_ten_hour_clock_digital">10 Hour Clock</string>
     <string name="appwidget_loading">Loading…</string>
+    <string name="appwidget_add">Add homescreen widget</string>
 
     <!-- About page -->
     <string name="about_app_logo_description">App logo</string>

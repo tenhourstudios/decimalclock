@@ -41,16 +41,19 @@
             android:key="preference_precision_digital"
             android:title="@string/prefs_precision"
             app:useSimpleSummaryProvider="true" />
-        <SwitchPreference
+<!--        <SwitchPreference
             android:defaultValue="false"
             android:key="blinking_separator_preference"
             android:title="@string/prefs_blinking_separators"
-            app:useSimpleSummaryProvider="true" />
+            app:useSimpleSummaryProvider="true" />-->
         <Preference
             android:key="date_time"
             android:title="@string/prefs_change_time">
             <intent android:action="android.settings.DATE_SETTINGS" />
         </Preference>
+        <Preference
+            android:key="add_widget"
+            android:title="@string/appwidget_add" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/prefs_about">
