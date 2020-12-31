@@ -32,6 +32,14 @@ class ClockFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_clock, container, false)
         viewModel = ViewModelProvider(this).get(ClockViewModel::class.java)
 
+        binding.clockViewModel = viewModel
+        binding.lifecycleOwner = this
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(activity)
         //viewModel.blinkingSeparator = sharedPrefs.getBoolean("blinking_separator_preference", false)
@@ -56,11 +64,6 @@ class ClockFragment : Fragment() {
             KEY_PRECISION_HIGH -> 4
             else -> 1000
         }
-
-        binding.clockViewModel = viewModel
-        binding.lifecycleOwner = this
-
-        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
