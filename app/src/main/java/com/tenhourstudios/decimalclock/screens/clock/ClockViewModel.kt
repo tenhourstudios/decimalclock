@@ -10,7 +10,6 @@ import com.tenhourstudios.decimalclock.data.Clock
 import com.tenhourstudios.decimalclock.data.KEY_PRECISION_LOW
 import com.tenhourstudios.decimalclock.data.KEY_STANDARD
 import com.tenhourstudios.decimalclock.data.MILLIS_IN_A_DAY
-import timber.log.Timber
 import java.time.Instant
 import java.time.OffsetTime
 
@@ -51,7 +50,6 @@ class ClockViewModel : ViewModel() {
                 (millisSinceEpoch + 1000 * timeZoneOffset.totalSeconds) % MILLIS_IN_A_DAY
 
             _clock.value = Clock(millisToday, blinkingSeparator)
-            Timber.i("blinking: $blinkingSeparator")
             handler.postDelayed(this, updateFrequency)
         }
     }

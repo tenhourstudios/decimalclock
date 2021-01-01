@@ -18,6 +18,11 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
+        val addWidgetPreference: Preference? = findPreference("add_widget")
+        val appWidgetManager: AppWidgetManager = requireContext().getSystemService(AppWidgetManager::class.java)
+        if (!appWidgetManager.isRequestPinAppWidgetSupported){
+            addWidgetPreference?.isVisible = false
+        }
     }
 
     override fun onResume() {
