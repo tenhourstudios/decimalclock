@@ -42,7 +42,7 @@ class ClockFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(activity)
-        //viewModel.blinkingSeparator = sharedPrefs.getBoolean("blinking_separator_preference", false)
+        viewModel.blinkingSeparator = sharedPrefs.getBoolean("blinking_separator_preference", false)
         viewModel.format = when (sharedPrefs.getString(
             "preference_format_digital",
             getString(R.string.prefs_digital_standard)
@@ -62,7 +62,9 @@ class ClockFragment : Fragment() {
         viewModel.updateFrequency = when (viewModel.precision) {
             KEY_PRECISION_MEDIUM -> 16
             KEY_PRECISION_HIGH -> 4
-            else -> 1000
+            else -> {
+                if (viewModel.blinkingSeparator) 16 else 1000
+            }
         }
     }
 

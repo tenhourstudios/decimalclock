@@ -11,7 +11,6 @@ import android.widget.RemoteViews
 import androidx.preference.PreferenceManager
 import com.tenhourstudios.decimalclock.MainActivity
 import com.tenhourstudios.decimalclock.R
-import com.tenhourstudios.decimalclock.data.clock.Clock
 import timber.log.Timber
 import java.time.OffsetTime
 
@@ -89,7 +88,7 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         val timeZoneOffset = OffsetTime.now().offset
         val millisToday =
             (System.currentTimeMillis() + 1000 * timeZoneOffset.totalSeconds) % MILLIS_IN_A_DAY
-        val time = Clock(millisToday)
+        val time = Clock(millisToday, false)
         val widgetText = time.tenHourTime(format, KEY_PRECISION_LOW)
 
         Timber.i(widgetText)

@@ -1,15 +1,13 @@
-package com.tenhourstudios.decimalclock.data.clock
-
-import com.tenhourstudios.decimalclock.data.KEY_PRECISION_HIGH
-import com.tenhourstudios.decimalclock.data.KEY_PRECISION_MEDIUM
-import com.tenhourstudios.decimalclock.data.MILLIS_IN_A_DAY
+package com.tenhourstudios.decimalclock.data
 
 /**
  * This class computes the Ten Hour time given the milliseconds elapsed in the day.
  */
 class TenHourClock(millis: Long) {
 
-    private val dMillis = millis * 100000000 / MILLIS_IN_A_DAY
+    var blinkingSeparator = false
+
+    private val dMillis = (millis * 100000000 / MILLIS_IN_A_DAY).toInt()
 
     /** total seconds elapsed today rounded down */
     private val dSecond = dMillis / 1000
@@ -20,17 +18,23 @@ class TenHourClock(millis: Long) {
     /** total hours elapsed today rounded down */
     private val dHour = dMinute / 100
 
+    private fun isEvenSecond(second: Int): Boolean {
+        return second % 2 == 0
+    }
+
     /**
      * Formats the decimal time in hours, minutes and seconds
      * @return a string of the form h:mm:ss:uu
      */
     fun getStandard(precision: Int): String {
-        var standardTime = "$dHour:${this.getMinutePadded()}"
+        val separator = if (isEvenSecond(dSecond) && blinkingSeparator) " " else  ":"
+
+        var standardTime = "$dHour$separator${this.getMinutePadded()}"
         if (precision >= KEY_PRECISION_MEDIUM) {
-            standardTime += ":${this.getSecondPadded()}"
+            standardTime += "$separator${this.getSecondPadded()}"
         }
         if (precision >= KEY_PRECISION_HIGH) {
-            standardTime += ":${this.getCentisecondPadded()}"
+            standardTime += "$separator${this.getCentisecondPadded()}"
         }
         return standardTime
     }
@@ -40,11 +44,14 @@ class TenHourClock(millis: Long) {
      * @return a string of the form h.mmssuu
      */
     fun getDecimal(precision: Int): String {
-        return "$dHour." + this.getMillisecondPadded().slice(1 until precision)
+        val separator = if (isEvenSecond(dSecond) && blinkingSeparator) " " else  "."
+        return "$dHour$separator" + this.getMillisecondPadded().slice(1 until precision)
     }
 
     fun getPercentage(precision: Int): String {
-        return "${dMinute / 10}." + this.getMillisecondPadded().slice(2 until precision) + "%"
+        val separator = if (isEvenSecond(dSecond) && blinkingSeparator) " " else  "."
+        return "${dMinute / 10}$separator" + this.getMillisecondPadded()
+            .slice(2 until precision) + "%"
     }
 
 

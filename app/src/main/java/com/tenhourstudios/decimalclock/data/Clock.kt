@@ -1,12 +1,15 @@
-package com.tenhourstudios.decimalclock.data.clock
-
-import com.tenhourstudios.decimalclock.data.KEY_DECIMAL
-import com.tenhourstudios.decimalclock.data.KEY_PERCENTAGE
+package com.tenhourstudios.decimalclock.data
 
 
-class Clock(millis: Long) {
+class Clock(millis: Long, blinkingSeparator: Boolean) {
 
     private val dClock = TenHourClock(millis)
+    private val tfClock = TwentyFourHourClock(millis)
+
+    init{
+        dClock.blinkingSeparator = blinkingSeparator
+        tfClock.blinkingSeparator = blinkingSeparator
+    }
 
     fun tenHourTime(format: String, precision: Int): String {
         return when (format) {
@@ -15,8 +18,6 @@ class Clock(millis: Long) {
             else -> dClock.getStandard(precision)
         }
     }
-
-    private val tfClock = TwentyFourHourClock(millis)
 
     fun twentyFourHourTime(precision: Int): String {
         return tfClock.twentyFourHourTime(precision)
