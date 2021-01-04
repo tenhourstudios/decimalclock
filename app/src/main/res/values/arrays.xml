@@ -23,6 +23,21 @@
         <item>@string/prefs_digital_percentage</item>
     </string-array>
 
+    <string-array name="calendar_months">
+        <item>@string/calendar_january</item>
+        <item>@string/calendar_february</item>
+        <item>@string/calendar_march</item>
+        <item>@string/calendar_april</item>
+        <item>@string/calendar_may</item>
+        <item>@string/calendar_june</item>
+        <item>@string/calendar_sol</item>
+        <item>@string/calendar_july</item>
+        <item>@string/calendar_august</item>
+        <item>@string/calendar_september</item>
+        <item>@string/calendar_october</item>
+        <item>@string/calendar_november</item>
+        <item>@string/calendar_december</item>
+    </string-array>
     <string-array name="preference_precision_digital">
         <item>@string/prefs_precision_low</item>
         <item>@string/prefs_precision_medium</item>

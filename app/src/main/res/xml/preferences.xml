@@ -51,6 +51,16 @@
             android:title="@string/prefs_change_time">
             <intent android:action="android.settings.DATE_SETTINGS" />
         </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Widget">
+        <ListPreference
+            android:key="widget_style"
+            android:entries="@array/preference_format_digital"
+            android:entryValues="@array/preference_format_digital"
+            android:defaultValue="@string/prefs_digital_standard"
+            app:useSimpleSummaryProvider="true"
+            android:title="Widget time format" />
         <Preference
             android:key="add_widget"
             android:title="@string/appwidget_add" />

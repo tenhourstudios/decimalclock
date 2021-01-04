@@ -1,6 +1,5 @@
 package com.tenhourstudios.decimalclock.data
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
@@ -8,8 +7,8 @@ import android.content.Context
 import android.content.Intent
 import android.util.TypedValue
 import android.widget.RemoteViews
+import androidx.navigation.NavDeepLinkBuilder
 import androidx.preference.PreferenceManager
-import com.tenhourstudios.decimalclock.MainActivity
 import com.tenhourstudios.decimalclock.R
 import timber.log.Timber
 import java.time.OffsetTime
@@ -17,10 +16,11 @@ import java.time.OffsetTime
 
 class ClockAppWidgetProvider : AppWidgetProvider() {
 
-    val ACTION_AUTO_UPDATE = "AUTO_UPDATE"
+    val ACTION_AUTO_UPDATE = "UPDATE_WIDGET_TIME"
 
     override fun onReceive(context: Context, intent: Intent) {
         super.onReceive(context, intent)
+        Timber.i("${intent.action} received")
         if (intent.action == ACTION_AUTO_UPDATE) {
             val appWidgetManager = AppWidgetManager.getInstance(context)
             val thisAppWidgetComponentName = ComponentName(context.packageName, javaClass.name)
@@ -37,10 +37,8 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-        val pendingIntent = Intent(context, MainActivity::class.java)
-            .let { clickIntent ->
-                PendingIntent.getActivity(context, 0, clickIntent, 0)
-            }
+        val pendingIntent = NavDeepLinkBuilder(context).setGraph(R.navigation.navigation_main)
+            .setDestination(R.id.clockFragment).createPendingIntent()
 
         val widgetText = updateTime(context)
         appWidgetIds.forEach { appWidgetId ->
@@ -79,8 +77,10 @@ class ClockAppWidgetProvider : AppWidgetProvider() {
 
     private fun updateTime(context: Context): String {
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
-        val format = when(sharedPrefs.getString("preference_format_digital", context.getString(R.string.prefs_digital_standard)))
-        {
+        val format = when (sharedPrefs.getString(
+            "widget_style",
+            context.getString(R.string.prefs_digital_standard)
+        )) {
             context.getString(R.string.prefs_digital_decimal) -> KEY_DECIMAL
             context.getString(R.string.prefs_digital_percentage) -> KEY_PERCENTAGE
             else -> KEY_STANDARD

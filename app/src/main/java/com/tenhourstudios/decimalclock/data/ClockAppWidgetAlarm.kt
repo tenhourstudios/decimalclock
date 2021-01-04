@@ -14,7 +14,7 @@ class ClockAppWidgetAlarm(private val context: Context) {
 
     @SuppressLint("ShortAlarm")
     fun startAlarm() {
-        val calendar: Calendar = Calendar.getInstance()
+        val calendar = Calendar.getInstance()
         calendar.add(Calendar.MILLISECOND, INTERVAL_MILLIS)
         val alarmIntent = Intent(context, ClockAppWidgetProvider::class.java)
         alarmIntent.action = ClockAppWidgetProvider().ACTION_AUTO_UPDATE
@@ -22,7 +22,7 @@ class ClockAppWidgetAlarm(private val context: Context) {
             context,
             ALARM_ID,
             alarmIntent,
-            PendingIntent.FLAG_CANCEL_CURRENT
+            PendingIntent.FLAG_UPDATE_CURRENT
         )
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         // RTC does not wake the device up
@@ -41,7 +41,7 @@ class ClockAppWidgetAlarm(private val context: Context) {
             context,
             ALARM_ID,
             alarmIntent,
-            PendingIntent.FLAG_CANCEL_CURRENT
+            PendingIntent.FLAG_UPDATE_CURRENT
         )
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.cancel(pendingIntent)

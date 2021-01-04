@@ -31,7 +31,7 @@
                 <action android:name="android.intent.action.USER_BACKGROUND" />
             </intent-filter>
             <intent-filter>
-                <action android:name="AUTO_UPDATE" />
+                <action android:name="UPDATE_WIDGET_TIME" />
             </intent-filter>
 
             <meta-data

@@ -38,13 +38,32 @@
     <string name="prefs_precision_medium">Medium</string>
     <string name="prefs_precision_high">High</string>
 
+    <!-- Calendar -->
+    <string name="calendar_january">January</string>
+    <string name="calendar_february">February</string>
+    <string name="calendar_march">March</string>
+    <string name="calendar_april">April</string>
+    <string name="calendar_may">May</string>
+    <string name="calendar_june">June</string>
+    <string name="calendar_sol">Sol</string>
+    <string name="calendar_july">July</string>
+    <string name="calendar_august">August</string>
+    <string name="calendar_september">September</string>
+    <string name="calendar_october">October</string>
+    <string name="calendar_november">November</string>
+    <string name="calendar_december">December</string>
+
+    <string name="calendar_st">st</string>
+    <string name="calendar_nd">nd</string>
+    <string name="calendar_rd">rd</string>
+    <string name="calendar_th">th</string>
+
     <!-- Font preferences -->
     <string name="prefs_font_casual" translatable="false">Casual</string>
     <string name="prefs_font_regular" translatable="false">Regular</string>
     <string name="prefs_font_thin" translatable="false">Thin</string>
     <string name="prefs_font_cursive" translatable="false">Cursive</string>
 
-    <string name="prefs_display_seconds">Display time with seconds</string>
     <string name="prefs_blinking_separators">Blinking separators</string>
 
     <string name="prefs_change_time">Change date &amp; time</string>

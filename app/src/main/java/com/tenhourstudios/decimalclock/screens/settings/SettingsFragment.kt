@@ -2,6 +2,7 @@ package com.tenhourstudios.decimalclock.screens.settings
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
@@ -19,8 +20,9 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.preferences, rootKey)
         val addWidgetPreference: Preference? = findPreference("add_widget")
-        val appWidgetManager: AppWidgetManager = requireContext().getSystemService(AppWidgetManager::class.java)
-        if (!appWidgetManager.isRequestPinAppWidgetSupported){
+        val appWidgetManager: AppWidgetManager =
+            requireContext().getSystemService(AppWidgetManager::class.java)
+        if (!appWidgetManager.isRequestPinAppWidgetSupported) {
             addWidgetPreference?.isVisible = false
         }
     }
@@ -47,6 +49,12 @@ class SettingsFragment : PreferenceFragmentCompat(),
             }
             Timber.i("System theme changed to $nightMode")
             AppCompatDelegate.setDefaultNightMode(nightMode)
+        }
+
+        if (key == "widget_style") {
+            val alarmIntent = Intent(context, ClockAppWidgetProvider::class.java)
+            alarmIntent.action = ClockAppWidgetProvider().ACTION_AUTO_UPDATE
+            context?.sendBroadcast(alarmIntent)
         }
     }
 
