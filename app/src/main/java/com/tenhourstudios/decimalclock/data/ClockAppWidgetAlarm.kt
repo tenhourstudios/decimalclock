@@ -6,16 +6,33 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import timber.log.Timber
+import java.time.OffsetTime
 import java.util.*
 
 class ClockAppWidgetAlarm(private val context: Context) {
     private val ALARM_ID = 0
-    private val INTERVAL_MILLIS = 10000
+    private val INTERVAL_MILLIS = 86400
 
     @SuppressLint("ShortAlarm")
     fun startAlarm() {
         val calendar = Calendar.getInstance()
-        calendar.add(Calendar.MILLISECOND, INTERVAL_MILLIS)
+
+        val timeZoneOffset = OffsetTime.now().offset
+        val millisToday = (System.currentTimeMillis() + 1000 * timeZoneOffset.totalSeconds) % MILLIS_IN_A_DAY
+        val millisUntilNext = INTERVAL_MILLIS - (millisToday % INTERVAL_MILLIS)
+        Timber.i("$millisUntilNext ${millisUntilNext.toInt()}")
+
+        calendar.add(Calendar.MILLISECOND, millisUntilNext.toInt())
+
+        Timber.i("Millis in day: $millisUntilNext")
+        Timber.i("10 time: ${TenHourClock(millisUntilNext).getStandard(KEY_PRECISION_MEDIUM)}")
+        Timber.i("24 time: ${TwentyFourHourClock(millisUntilNext).twentyFourHourTime(KEY_PRECISION_MEDIUM)}")
+
+        val millis = calendar.timeInMillis % MILLIS_IN_A_DAY
+        Timber.i("Millis in day: $millis")
+        Timber.i("10 time: ${TenHourClock(millis).getStandard(KEY_PRECISION_MEDIUM)}")
+        Timber.i("24 time: ${TwentyFourHourClock(millis).twentyFourHourTime(KEY_PRECISION_MEDIUM)}")
+
         val alarmIntent = Intent(context, ClockAppWidgetProvider::class.java)
         alarmIntent.action = ClockAppWidgetProvider().ACTION_AUTO_UPDATE
         val pendingIntent = PendingIntent.getBroadcast(
